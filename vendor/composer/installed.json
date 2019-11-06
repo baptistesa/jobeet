@@ -360,6 +360,64 @@
         ]
     },
     {
+        "name": "symfony/asset",
+        "version": "v4.3.6",
+        "version_normalized": "4.3.6.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/asset.git",
+            "reference": "3f97e57596884f7b9158d564a533112a0d19dbdd"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/asset/zipball/3f97e57596884f7b9158d564a533112a0d19dbdd",
+            "reference": "3f97e57596884f7b9158d564a533112a0d19dbdd",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^7.1.3"
+        },
+        "require-dev": {
+            "symfony/http-foundation": "~3.4|~4.0",
+            "symfony/http-kernel": "~3.4|~4.0"
+        },
+        "suggest": {
+            "symfony/http-foundation": ""
+        },
+        "time": "2019-08-03T21:50:52+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "4.3-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Symfony\\Component\\Asset\\": ""
+            },
+            "exclude-from-classmap": [
+                "/Tests/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony Asset Component",
+        "homepage": "https://symfony.com"
+    },
+    {
         "name": "symfony/cache",
         "version": "v4.3.6",
         "version_normalized": "4.3.6.0",
