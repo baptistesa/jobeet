@@ -36,9 +36,12 @@ return array(
     'Symfony\\Bundle\\TwigBundle\\' => array($vendorDir . '/symfony/twig-bundle'),
     'Symfony\\Bundle\\FrameworkBundle\\' => array($vendorDir . '/symfony/framework-bundle'),
     'Symfony\\Bridge\\Twig\\' => array($vendorDir . '/symfony/twig-bridge'),
+    'Sensio\\Bundle\\FrameworkExtraBundle\\' => array($vendorDir . '/sensio/framework-extra-bundle/src'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
     'Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
     'Psr\\Cache\\' => array($vendorDir . '/psr/cache/src'),
+    'Doctrine\\Common\\Lexer\\' => array($vendorDir . '/doctrine/lexer/lib/Doctrine/Common/Lexer'),
+    'Doctrine\\Common\\Annotations\\' => array($vendorDir . '/doctrine/annotations/lib/Doctrine/Common/Annotations'),
     'App\\Tests\\' => array($baseDir . '/tests'),
     'App\\' => array($baseDir . '/src'),
 );
