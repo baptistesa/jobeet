@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Bienvenue sur Jobeet</title>
+		<link rel="stylesheet" href="{{ asset('auth.css') }}">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<div class="container">
+            <h1 style="color: #41A1DB">Bienvenue sur Jobeet</h1>
+
+            <div class="buttons_container">
+                <button class="my_button"><a href="{{ path('signup') }}">Inscription</a></button>
+                <button class="my_button"><a href="{{ path('login') }}">Connexion</a></button>
+            </div>
+        </div>
+	</body>
+</html>

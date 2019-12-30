@@ -1,3 +1,11 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+login:
+   path: /login
+   controller: App\Controller\LoginController::login
+
+signup:
+  path: /signup
+  controller: App\Controller\SignupController::signup
+
+auth:
+   path: /
+   controller: App\Controller\AuthController::displayAuth

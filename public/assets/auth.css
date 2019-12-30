@@ -1,0 +1,33 @@
+.container {
+  background: #f9fcfc;
+  height: 100vh;
+  width: 100vw;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  padding-top: 30vh;
+}
+
+.buttons_container {
+    margin-top: 5rem;
+}
+
+.my_button {
+  height: 2.5rem;
+  width: 10rem;
+  background: white;
+  color: gray;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0 4px 16px 0 rgba(50,56,63,0.08);
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+.my_button:hover {
+  height: 2.5rem;
+  width: 10rem;
+  background: white;
+  color: gray;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0 4px 16px 0 rgba(50,56,63,0.20);
+}
