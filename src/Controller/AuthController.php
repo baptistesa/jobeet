@@ -19,4 +19,11 @@ class AuthController extends AbstractController
         return $this->redirectToRoute('login');
     }
 
+    public function goToProfilentreprise() {
+        return $this->redirectToRoute('profil-entreprise');
+    }
+    
+    public function goToListentreprise() {
+        return $this->redirectToRoute('liste-entreprise');
+    }
 }

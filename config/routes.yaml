@@ -6,6 +6,14 @@ signup:
   path: /signup
   controller: App\Controller\SignupController::signup
 
+profil-entreprise:
+   path: /profil-entreprise
+   controller: App\Controller\ProfilentrepriseController::displayProfilentreprise
+
+liste-entreprise:
+   path: /liste-entreprise
+   controller: App\Controller\ListeEntrepriseController::displayListeEntreprise
+
 auth:
    path: /
    controller: App\Controller\AuthController::displayAuth
