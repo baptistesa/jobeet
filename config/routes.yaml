@@ -18,6 +18,10 @@ liste-matchs:
    path: /liste-matchs
    controller: App\Controller\ListeMatchsController::displayListeMatchs
 
+home:
+   path: /home
+   controller: App\Controller\HomeController::displayHome
+
 auth:
    path: /
    controller: App\Controller\AuthController::displayAuth

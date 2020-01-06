@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Bienvenue sur Jobeet</title>
+		<link rel="stylesheet" href="{{ asset('home.css') }}">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<div class="container">
+            <h1 style="color: #41A1DB">Home</h1>
+
+            <div class="buttons_container">
+                <button class="my_button"><a href="{{ path('profil-entreprise') }}">Profil entreprise</a></button>
+                <button class="my_button"><a href="{{ path('liste-entreprise') }}">Liste des entreprises</a></button>
+                <button class="my_button"><a href="{{ path('liste-matchs') }}">Liste des matchs</a></button>
+            </div>
+        </div>
+	</body>
+</html>
