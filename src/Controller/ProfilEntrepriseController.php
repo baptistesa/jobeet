@@ -4,10 +4,10 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class ProfilentrepriseController extends AbstractController
+class ProfilEntrepriseController extends AbstractController
 {
 
-    public function displayProfilentreprise() {
+    public function displayProfilEntreprise() {
         return $this->render('profil-entreprise.html.twig');
     }
 }
