@@ -1,18 +1,53 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Profil utilisateur{% endblock %}
+{% block title %}Mon profil{% endblock %}
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('profil-utilisateur.css') }}">
 {% endblock %}
 
 {% block body %}
-    <div class="container col-lg-12">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" style="color: #41A1DB; font-family: 'Montserrat', sans-serif;">Jobeet</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('accueil') }}">Accueil
+					</a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="{{ path('profil-utilisateur') }}">Mon profil
+						<span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('profil-entreprise', {id: '1'}) }}">Profil entreprise</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('liste-entreprise') }}">Liste des entreprises</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('liste-matchs') }}">Liste des matchs</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('liste-offres') }}">Liste des offres</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('liste-candidatures') }}">Liste des candidatures
+					</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+    <div class="my_container col-lg-12">
         <h1 style="color: #41A1DB">Profil</h1>
         <p>Informations concernant l'utilisateur</p>
+            <h4>{{ prenom }} {{ nom }}</h4>
         <div class="description">
             <h4>Description</h4>
-            <p>Actuellement en cinquième et dernière année d'école d'ingénieur informatique (EPITA), je suis dynamique, motivée et organisée. Forte d'un premier stage et de diverses activités associatives (internes et externes à l'école), j'ai déjà pu appliquer plusieurs notions liées à ma formation : programmation, organisation ou encore relations humaines. </p>
+            <p>{{ description }}</p>
             <button>Modifier</button>
         </div>
     </div>

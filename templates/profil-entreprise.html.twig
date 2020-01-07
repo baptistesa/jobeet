@@ -18,11 +18,12 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="{{ path('profil-utilisateur') }}">Profil utilisateur</a>
+					<a class="nav-link" href="{{ path('profil-utilisateur') }}">Mon profil</a>
 				</li>
 				<li class="nav-item active">
 					<a class="nav-link" href="{{ path('profil-entreprise', {id: '1'}) }}">Profil entreprise
-						<span class="sr-only">(current)</span></a>
+						<span class="sr-only">(current)</span>
+					</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="{{ path('liste-entreprise') }}">Liste des entreprises</a>
@@ -45,16 +46,18 @@
 			{% if entreprise.doc._id == id %}
 				<h1 style="color: #41A1DB">{{ entreprise.doc.name }}</h1>
 				<p>{{ entreprise.doc.description }}</p>
-				<div class="offer">
-					<h5>Développeur</h5>
-					<p>En informatique, un développeur ou analyste programmeur est un informaticien qui réalise des logiciels et les met en œuvre à l'aide de langages de programmation.</p>
-					<button>En savoir plus</button>
-				</div>
-				<div class="offer">
-					<h5>Chef de projet</h5>
-					<p>Le chef de projet (CDP) est la personne chargée de mener un projet et de gérer son bon déroulement. De manière générale, il anime une équipe pendant la durée du ou des divers projets dont il a la charge.</p>
-					<button>En savoir plus</button>
-				</div>
+
+
+				{% for annonce in annonces.rows %}
+					{% if annonce.doc.entreprise_id == id %}
+						<div class="offer">
+							<h5>{{ annonce.doc.title }}</h5>
+							<p>{{ annonce.doc.description }}</p>
+							<button>En savoir plus</button>
+						</div>
+
+					{% endif %}
+				{% endfor %}
 			{% endif %}
 		{% endfor %}
 	</div>
