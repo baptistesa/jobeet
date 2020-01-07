@@ -5,10 +5,11 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpClient\HttpClient;
+use Symfony\Component\HttpFoundation\Session\Session;
+
 
 class HomeController extends AbstractController
 {
-
     public function displayHome(Request $request)
     {
         $test = 1;
@@ -24,6 +25,13 @@ class HomeController extends AbstractController
             $tmp_user = $contents["rows"][$i]["doc"]["mail"];
             $tmp_password = $contents["rows"][$i]["doc"]["password"];
             if ($tmp_user == $username && $tmp_password == $password) {
+                $session = new Session();
+                $session->start();
+                $session->set('mail', $username);
+                $session->set('name', $contents["rows"][$i]["doc"]["name"]);
+                $session->set('last_name', $contents["rows"][$i]["doc"]["last_name"]);
+                $session->set('description', $contents["rows"][$i]["doc"]["description"]);
+                $session->set('is_recruteur', $contents["rows"][$i]["doc"]["is_recruteur"]);
                 return $this->render('home.html.twig', array('test' => $test));
             }
         }
