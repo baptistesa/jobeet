@@ -12,8 +12,8 @@
 		<div class="container col-lg-12">
 			{% for entreprise in entreprises.rows %}
 				{% if entreprise.doc._id == id %}
-					<h1 style="color: #41A1DB">entreprise.doc.name</h1>
-					<p>entreprise.doc.description</p>
+					<h1 style="color: #41A1DB">{{ entreprise.doc.name }}</h1>
+					<p>{{ entreprise.doc.description }}</p>
 					<div class="offer">
 						<h5>Développeur</h5>
 						<p>En informatique, un développeur ou analyste programmeur est un informaticien qui réalise des logiciels et les met en œuvre à l'aide de langages de programmation.</p>
