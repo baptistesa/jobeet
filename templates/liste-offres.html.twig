@@ -1,21 +1,55 @@
 {% extends 'base.html.twig' %}
 
-    {% block title %}Liste des offres{% endblock %}
+{% block title %}Liste des offres
+{% endblock %}
 
-    {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('liste-offres.css') }}">
-    {% endblock %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('liste-offres.css') }}">
+{% endblock %}
 
-    {% block body %}
-        <div class="container">
-            <h1 style="color: #41A1DB">Liste des offres</h1>
-            <p>Aucune offre disponible</p>
-            {% for annonce in annonces.rows %}
-            <div class="offer">
-                <h5>{{ annonce.doc.title }}</h5>
-                <p>{{ annonce.doc.description }}</p>
+{% block body %}
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" style="color: #41A1DB; font-family: 'Montserrat', sans-serif;">Jobeet</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('accueil') }}">Accueil
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('profil-utilisateur') }}">Profil utilisateur</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('profil-entreprise', {id: '1'}) }}">Profil entreprise</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('liste-entreprise') }}">Liste des entreprises</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('liste-matchs') }}">Liste des matchs</a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="{{ path('liste-offres') }}">Liste des offres
+						<span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('liste-candidatures') }}">Liste des candidatures</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<div class="my_container">
+		<h1 style="color: #41A1DB">Liste des offres</h1>
+		<p>Aucune offre disponible</p>
+		{% for annonce in annonces.rows %}
+			<div class="offer">
+				<h5>{{ annonce.doc.title }}</h5>
+				<p>{{ annonce.doc.description }}</p>
                 <button><a href="{{ path('offre', {id : annonce.doc._id}) }}">En savoir plus</a></button>
-            </div>
-            {% endfor %}
-        </div>
-    {% endblock %}
+			</div>
+		{% endfor %}
+	</div>
+{% endblock %}

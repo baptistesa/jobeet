@@ -20,7 +20,7 @@ class HomeController extends AbstractController
         $contents = $response->toArray();
 
 
-        for ($i = 0; $i < count($contents) - 1; $i++) {
+        for ($i = 0; $i < count($contents); $i++) {
             $tmp_user = $contents["rows"][$i]["doc"]["mail"];
             $tmp_password = $contents["rows"][$i]["doc"]["password"];
             if ($tmp_user == $username && $tmp_password == $password) {
@@ -54,6 +54,11 @@ class HomeController extends AbstractController
         ]);
         $contents = $response->getContent();
         return $this->render('home.html.twig', array('test' => $test));
+    }
+
+    public function accueil(Request $request)
+    {
+        return $this->render('home.html.twig');
     }
 
     public function goToLogin()

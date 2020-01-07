@@ -46,3 +46,7 @@ inscription:
 auth:
    path: /
    controller: App\Controller\AuthController::displayAuth
+
+accueil:
+   path: '/accueil'
+   controller: App\Controller\HomeController::accueil

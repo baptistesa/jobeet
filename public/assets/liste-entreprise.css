@@ -1,10 +1,14 @@
-.container {
+.my_container {
   background: #f9fcfc;
   height: 100vh;
   width: 100vw;
   text-align: center;
   font-family: "Montserrat", sans-serif;
   padding-top: 10vh;
+}
+
+.bg-light {
+  background-color: white !important;
 }
 
 a {
@@ -18,12 +22,12 @@ a:link {
 
 /* mouse over link */
 a:hover {
-  color: #41A1DB;
+  color: #41a1db;
 }
 
 /* selected link */
 a:active {
-  color: #41A1DB;
+  color: #41a1db;
 }
 
 .img-thumbnail {
@@ -31,7 +35,7 @@ a:active {
 }
 
 .company {
-  height:12rem;
+  height: 12rem;
   width: 10rem;
   display: inline-block;
   background: #ffffff;
@@ -41,4 +45,3 @@ a:active {
   margin-bottom: 3%;
   box-shadow: 0 4px 16px 0 rgba(50, 56, 63, 0.08);
 }
-

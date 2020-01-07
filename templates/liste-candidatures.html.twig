@@ -1,19 +1,61 @@
 {% extends 'base.html.twig' %}
 
-    {% block title %}Liste des candidatures{% endblock %}
+{% block title %}Liste des candidatures
+{% endblock %}
 
-    {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('liste-candidatures.css') }}">
-    {% endblock %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('liste-candidatures.css') }}">
+{% endblock %}
 
-    {% block body %}
-        <div class="container">
-            <h1 style="color: #41A1DB">Liste des candidatures</h1>
-            <p>Aucune candidature disponible</p>
-            <div class="candidature">
-                <h5> Nom Prénom </h5>
-                <p> Description </p>
-                <button>Accepter</button><button>Refuser</button>
-            </div>
-        </div>
-    {% endblock %}
+{% block body %}
+
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" style="color: #41A1DB; font-family: 'Montserrat', sans-serif;">Jobeet</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('accueil') }}">Accueil
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('profil-utilisateur') }}">Profil utilisateur</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('profil-entreprise', {id: '1'}) }}">Profil entreprise</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('liste-entreprise') }}">Liste des entreprises</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('liste-matchs') }}">Liste des matchs</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('liste-offres') }}">Liste des offres</a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="{{ path('liste-candidatures') }}">Liste des candidatures
+						<span class="sr-only">(current)</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<div class="my_container">
+		<h1 style="color: #41A1DB">Liste des candidatures</h1>
+		<p>Aucune candidature disponible</p>
+		<div class="candidature">
+			<h5>
+				Nom Prénom
+			</h5>
+			<p>
+				Description
+			</p>
+			<button>Accepter</button>
+			<button>Refuser</button>
+		</div>
+	</div>
+{% endblock %}
