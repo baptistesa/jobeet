@@ -34,6 +34,10 @@ home:
    path: /home
    controller: App\Controller\HomeController::displayHome
 
+recherche:
+   path: /recherche
+   controller: App\Controller\RechercheController::displayRecherche
+
 offre:
    path: /offre/{id}
    controller: App\Controller\OffreController::displayOffre
