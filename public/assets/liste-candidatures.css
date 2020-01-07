@@ -4,5 +4,30 @@
   width: 100vw;
   text-align: center;
   font-family: "Montserrat", sans-serif;
-  padding-top: 30vh;
+  padding-top: 10vh;
+}
+
+.candidature {
+  height:8rem;
+  width: 40rem;
+  display: inline-block;
+  background: #ffffff;
+  margin: 2%;
+  border-radius: 8px;
+  padding: 1em;
+  box-shadow: 0 4px 16px 0 rgba(50, 56, 63, 0.08);
+}
+
+button {
+  background: #41A1DB;
+  color: white;
+  width: 8em;
+  height: 2.5em;
+  text-align: center;
+  border-radius: 20px;
+  border-color: transparent;
+  margin: auto;
+  margin-left: 1em;
+  margin-right: 1em;
+  margin-top: 5px;
 }
