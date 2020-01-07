@@ -18,6 +18,12 @@
         <title>Liste des matchs</title>
         <link rel="stylesheet" href="{{ asset('liste-matchs.css') }}">
         <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+
+        <script>
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
+        </script>
     </head>
     <body>
         <div class="container">
@@ -42,6 +48,16 @@
                         </div>
                         <div class="card-body">
                             <p class="card-text">Lorem ipsum dolor sit amet consectetur</p>
+                            <div class="row justify-content-between">
+                            <div class="col-4">
+                                <p><b><u>Match %</u></b> : </p>
+                            </div>
+                            <div class="col">
+                                <div class="progress" data-toggle="tooltip" data-placement="bottom" title="75%">
+                                    <div class="progress-bar w-75 bg-success" role="progressbar"></div>
+                                </div>
+                            </div>
+                            </div>
                         </div>
                     </div>
                 </div>
