@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Liste des entreprises</title>
-        <link rel="stylesheet" href="{{ asset('liste-entreprise.css') }}">
-    </head>
-    <body>
-        <div class="container">
-            <h1 style="color: #41A1DB">Liste des entreprises</h1>
-            <p>Aucune entreprise trouvée</p>
-        </div>
-    </body>
+	<head>
+		<meta charset="UTF-8">
+		<title>Liste des entreprises</title>
+		<link rel="stylesheet" href="{{ asset('liste-entreprise.css') }}">
+	</head>
+	<body>
+		<div class="container">
+			<h1 style="color: #41A1DB">Liste des entreprises</h1>
+			<p>Aucune entreprise trouvée</p>
+		{% for entreprise in entreprises.rows %}
+			<p>{{ entreprise.doc.name }}</p>
+        {% endfor %}
+		</div>
+		</body>
+	</body>
 </html>
