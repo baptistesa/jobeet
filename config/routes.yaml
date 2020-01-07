@@ -22,6 +22,14 @@ liste-matchs:
    path: /liste-matchs
    controller: App\Controller\ListeMatchsController::displayListeMatchs
 
+liste-offres:
+   path: /liste-offres
+   controller: App\Controller\ListeOffresController::displayListeOffres
+
+liste-candidatures:
+   path: /liste-candidatures
+   controller: App\Controller\ListeCandidaturesController::displayListeCandidatures
+
 home:
    path: /home
    controller: App\Controller\HomeController::displayHome
