@@ -30,7 +30,6 @@
         {% set counter = 0 %}
         <div class="container">
             <h1 style="color: #41A1DB">Liste des matchs</h1>
-            <p>Aucun match disponible</p>
 
             {# Iterating on the matches #}
             {% for match in matches %}
@@ -70,6 +69,11 @@
             {# Instance where we are in the middle of filling a row but run out of matches so we need to close the row#}
             {% if counter % 3 != 2 %}
                 </div>
+            {% endif %}
+
+            {# No matches were found, the counter stayed at 0 #}
+            {% if counter == 0 %}
+                <p>Aucun match disponible</p>
             {% endif %}
 
             <div class="row">
