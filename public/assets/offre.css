@@ -16,13 +16,35 @@
   border-radius: 8px;
   padding: 1em;
   box-shadow: 0 4px 16px 0 rgba(50, 56, 63, 0.08);
+}
 
+.description {
+  height:10rem;
+  width: 40rem;
+  display: inline-block;
+  background: #ffffff;
+  margin: 2%;
+  border-radius: 8px;
+  padding: 1em;
+  box-shadow: 0 4px 16px 0 rgba(50, 56, 63, 0.08);
+}
+
+.competence {
+  background: #41A1DB;
+  color: white;
+  width: 10rem;
+  height: 2rem;
+  text-align: center;
+  border-radius: 20px;
+  border-color: transparent;
+  margin: auto;
+  margin-top: 5px;
 }
 
 button {
   background: #41A1DB;
   color: white;
-  width: auto;
+  width: 8rem;
   text-align: center;
   border-radius: 20px;
   border-color: transparent;

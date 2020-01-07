@@ -13,22 +13,20 @@
 			<div class="my_container col-lg-12">
 				<h1 style="color: #41A1DB">{{ annonce.doc.title }}</h1>
 				<div class="description">
-					<p>{{ annonce.doc.description }}
-					</p>
+					<h4 style="color: #41A1DB">Description</h4>
+					<p>{{ annonce.doc.description }}</p>
 					<button>Modifier</button>
 				</div>
-				<div class="competences">
+				<div class="description">
 					<h4 style="color: #41A1DB">Compétences</h4>
 					{% if not annonce.doc.competences %}
 						<p>Aucune compétence nécessaire</p>
 					{% endif %}
 					{% for competence in annonce.doc.competences %}
-						<div class="competence">
-							<h5>{{ competence }}</h5>
-						</div>
+						<button>{{ competence }}</button>
 					{% endfor %}
 				</div>
-				<div class="postulants">
+				<div class="description">
 					<h4 style="color: #41A1DB">Postulants</h4>
 					{% if not annonce.doc.postulants %}
 						<p>Aucune candidature recensée</p>
