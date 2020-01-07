@@ -59,5 +59,36 @@
 			</div>
 			<input class="my_button" type="submit" name="login" value="Rechercher"/>
 		</form>
+		<h4 style="color: #41A1DB">Entreprise</h4>
+		<row>
+			{% for entreprise in entreprises.rows %}
+				<div class="entreprise">
+					<p>{{ entreprise.doc.name}}</p>
+					<button>
+						<a href="{{ path('profil-entreprise', {id : entreprise.doc._id}) }}">En savoir plus</a>
+					</button>
+				</div>
+			{% endfor %}
+		</row>
+		<h4 style="color: #41A1DB">Annonces</h4>
+		<row>
+			{% for annonce in annonces.rows %}
+				<div class="annonce">
+					<h5>{{ annonce.doc.title }}</h5>
+					<button>
+						<a href="{{ path('offre', {id : annonce.doc._id}) }}">En savoir plus</a>
+					</button>
+				</div>
+			{% endfor %}
+		</row>
+		<h4 style="color: #41A1DB">Utilisateurs</h4>
+		<row>
+			{% for user in users.rows %}
+				<div class="user">
+					<p>{{ user.doc.last_name}}
+						{{ user.doc.name }}</p>
+				</div>
+			{% endfor %}
+		</row>
 	</div>
 {% endblock %}
