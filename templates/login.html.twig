@@ -1,18 +1,27 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Connexion</title>
-        <link rel="stylesheet" href="{{ asset('login.css') }}">
-        <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <div class="container">
-            <h1 style="color: #41A1DB">Connexion</h1>
-            <p>Entre vos identifiants de connexion</p>
-            <div class="buttons_container">
-                <button class="my_button"><a href="{{ path('home') }}">Suivant</a></button>
-            </div>
-        </div>
-    </body>
+	<head>
+		<meta charset="UTF-8">
+		<title>Connexion</title>
+		<link rel="stylesheet" href="{{ asset('login.css') }}">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<div class="container">
+			<h1 style="color: #41A1DB">Connexion</h1>
+			<p>Entre vos identifiants de connexion</p>
+
+
+			<form action="{{ path('home') }}" method="post" name="formulario_login">
+				<label for="username">Utilisateur:</label>
+				<input type="text" id="username" name="_username" value=""/>
+				<br/>
+				<label for="password">Mot de passe:</label>
+				<input type="password" id="password" name="_password"/>
+				<br/>
+				<input type="submit" name="login" value="Se connecter"/>
+			</form>
+		</div>
+
+	</body>
 </html>
