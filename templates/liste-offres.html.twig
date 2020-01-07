@@ -43,7 +43,9 @@
 	</nav>
 	<div class="my_container">
 		<h1 style="color: #41A1DB">Liste des offres</h1>
-		<p>Aucune offre disponible</p>
+		{% if not annonces %}
+			<p>Aucune offre disponible</p>
+		{% endif %}
 		{% for annonce in annonces.rows %}
 			<div class="offer">
 				<h5>{{ annonce.doc.title }}</h5>

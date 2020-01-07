@@ -18,6 +18,50 @@
 					</p>
 					<button>Modifier</button>
 				</div>
+				<div class="competences">
+					<h4 style="color: #41A1DB">Compétences</h4>
+					{% if not annonce.doc.competences %}
+						<p>Aucune compétence nécessaire</p>
+					{% endif %}
+					{% for competence in annonce.doc.competences %}
+						<div class="competence">
+							<h5>{{ competence }}</h5>
+						</div>
+					{% endfor %}
+				</div>
+				<div class="postulants">
+					<h4 style="color: #41A1DB">Postulants</h4>
+					{% if not annonce.doc.postulants %}
+						<p>Aucune candidature recensée</p>
+					{% endif %}
+					{% for postulant in annonce.doc.postulants %}
+						{% for user in users.rows %}
+							{% if user.doc._id == postulant %}
+								<div class="candidature">
+									<h5>{{ user.doc.last_name }} {{ user.doc.name }}</h5>
+									<button>Accepter</button>
+									<button>Refuser</button>
+								</div>
+							{% endif %}
+						{% endfor %}
+					{% endfor %}
+				</div>
+				<div class="matchs">
+					<h4 style="color: #41A1DB">Postulants</h4>
+					{% if not annonce.doc.matches %}
+						<p>Aucun match trouvé</p>
+					{% endif %}
+					{% for match in annonce.doc.matches %}
+						{% for user in users.rows %}
+							{% if user.doc._id == match %}
+								<div class="match">
+									<h5>{{ user.doc.last_name }} {{ user.doc.name }}</h5>
+									<button>Inviter</button>
+								</div>
+							{% endif %}
+						{% endfor %}
+					{% endfor %}
+				</div>
 			</div>
 		{% endif %}
 	{% endfor %}
