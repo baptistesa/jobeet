@@ -52,12 +52,9 @@
 		{% endif %}
 		{% for annonce in annonces.rows %}
 			<div class="offer">
-				<h6 style="color: #41A1DB">Intitulé</h6>
-				<h5>{{ annonce.doc.title }}</h5>
-				<h6 style="color: #41A1DB">Entreprise</h6>
 				{% for entreprise in entreprises.rows %}
 					{% if annonce.doc.entreprise_id == entreprise.doc._id %}
-						<p>{{ entreprise.doc.name}}</p>
+						<h5>{{ annonce.doc.title }} - {{ entreprise.doc.name}}</h5>
 					{% endif %}
 				{% endfor %}
 				<h6 style="color: #41A1DB">Description</h6>
