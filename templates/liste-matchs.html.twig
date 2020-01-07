@@ -26,12 +26,58 @@
         </script>
     </head>
     <body>
+        {# Setting up a counter to know when to add a row and keeping track of the cards#}
+        {% set counter = 0 %}
         <div class="container">
             <h1 style="color: #41A1DB">Liste des matchs</h1>
-            <p>Aucun match disponible</p>
+
+            {# Iterating on the matches #}
+            {% for match in matches %}
+                {# 3 cards per row ==> if counter % 3 == 0, we are on a new row #}
+                {% if counter % 3 == 0 %}
+                    <div class="row">
+                {% endif %}
+                        {# Putting the card #}
+                        <div class="col-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title"><a href="#">{{ match.doc.offerName }}</a></h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur</p>
+                                    <div class="row justify-content-between">
+                                        <div class="col-4">
+                                            <p><b><u>Match %</u></b> : </p>
+                                        </div>
+                                        <div class="col">
+                                            <div class="progress" data-toggle="tooltip" data-placement="bottom" title="{{ match.doc.offerMatch }}%">
+                                                <div class="progress-bar bg-warning" role="progressbar" style="width: {{ match.doc.offerMatch }}%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                {# If counter % 3 == 2, we finished filling the row so we close it and add a break before starting the next one#}
+                {% if counter % 3 == 2 %}
+                    </div>
+                    <br>
+                {% endif %}
+                {# Incrementing counter #}
+                {% set counter = counter + 1 %}
+            {% endfor %}
+            {# Instance where we are in the middle of filling a row but run out of matches so we need to close the row#}
+            {% if counter % 3 != 2 %}
+                </div>
+            {% endif %}
+
+            {# No matches were found, the counter stayed at 0 #}
+            {% if counter == 0 %}
+                <p>Aucun match disponible</p>
+            {% endif %}
 
             <div class="row">
-                <div class="col">
+                <div class="col-4">
                     <div class="card">
                         <div class="card-header">
                             <h5 class="card-title"><a href="#">Match #1</a></h5>
@@ -51,7 +97,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col">
+                <div class="col-4">
                     <div class="card">
                         <div class="card-header">
                             <h5 class="card-title"><a href="#">Match #2</a></h5>
@@ -71,7 +117,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col">
+                <div class="col-4">
                     <div class="card">
                         <div class="card-header">
                             <h5 class="card-title"><a href="#">Match #3</a></h5>
@@ -85,6 +131,29 @@
                                 <div class="col">
                                     <div class="progress" data-toggle="tooltip" data-placement="bottom" title="10%">
                                         <div class="progress-bar bg-danger" role="progressbar" style="width: 10%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title"><a href="#">Match #1</a></h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Lorem ipsum dolor sit amet consectetur</p>
+                            <div class="row justify-content-between">
+                                <div class="col-4">
+                                    <p><b><u>Match %</u></b> : </p>
+                                </div>
+                                <div class="col">
+                                    <div class="progress" data-toggle="tooltip" data-placement="bottom" title="50%">
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 50%"></div>
                                     </div>
                                 </div>
                             </div>
