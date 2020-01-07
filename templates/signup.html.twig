@@ -9,10 +9,28 @@
 	<body>
 		<div class="container">
 			<div class="buttons_container">
-            <h1 style="color: #41A1DB">Inscription</h1>
-				<button class="my_button">
-					<a href="{{ path('home') }}">Suivant</a>
-				</button>
+				<h1 style="color: #41A1DB">Inscription</h1>
+
+
+				<form action="{{ path('inscription') }}" method="post" name="formulario_login">
+					<label for="prenom">Prénom:</label>
+					<input type="text" id="prenom" name="_prenom"/>
+					<br/>
+					<label for="nom">Nom:</label>
+					<input type="text" id="name" name="_name"/>
+					<br/>
+					<label for="username">Adresse mail:</label>
+					<input type="text" id="mail" name="_mail" value=""/>
+					<br/>
+					<label for="password">Mot de passe:</label>
+					<input type="password" id="password" name="_password"/>
+					<br/>
+					<label for="description">Description:</label>
+					<input type="text" id="description" name="_description"/>
+					<br/>
+					<input type="submit" name="login" value="S'inscrire"/>
+				</form>
+
 			</div>
 		</div>
 	</body>
