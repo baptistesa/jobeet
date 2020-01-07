@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Bienvenue sur Jobeet</title>
+{% extends 'base.html.twig' %}
+
+    {% block title %}Bienvenue sur Jobeet{% endblock %}
+
+    {% block stylesheets %}
 		<link rel="stylesheet" href="{{ asset('home.css') }}">
-        <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-	</head>
-	<body>
+    {% endblock %}
+
+    {% block body %}
 		<div class="container">
             <h1 style="color: #41A1DB">Home</h1>
 
@@ -21,5 +21,4 @@
                 <button class="my_button"><a href="{{ path('liste-candidatures') }}">Liste des candidatures</a></button>
             </div>
         </div>
-	</body>
-</html>
+    {% endblock %}
