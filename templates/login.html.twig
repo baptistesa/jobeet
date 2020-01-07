@@ -6,26 +6,24 @@
     {% endblock %}
 
 	{% block body %}
-		<div class="container">
+		<div class="my_container">
 			<h1 style="color: #41A1DB">Connexion</h1>
 			<p>Entrez vos identifiants de connexion</p>
 
 
 			<form action="{{ path('home') }}" method="post" name="formulario_login">
 				<div class="form-group row justify-content-center">
-					<label class="col-2 col-form-label" for="username">Utilisateur:</label>
 					<div class="col-6">
-						<input class="form-control" type="text" id="username" name="_username" value=""/>
+						<input class="form-control" type="text" id="username" name="_username" value="" placeholder="Adresse mail"/>
 					</div>
 				</div>
 				<div class="form-group row justify-content-center">
-					<label class="col-2 col-form-label" for="password">Mot de passe:</label>
 					<div class="col-6">
-						<input class="form-control" type="password" id="password" name="_password"/>
+						<input class="form-control" type="password" id="password" name="_password" placeholder="Mot de passe"/>
 					</div>
 				</div>
 				<br/>
-				<input type="submit" name="login" value="Se connecter"/>
+				<input class="my_button" type="submit" name="login" value="Se connecter"/>
 			</form>
 		</div>
 	{% endblock %}
