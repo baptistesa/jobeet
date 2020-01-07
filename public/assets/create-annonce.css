@@ -4,9 +4,9 @@
   width: 100vw;
   text-align: center;
   font-family: "Montserrat", sans-serif;
-  padding-top: 10vh;
+  padding-top: 30vh;
 }
 
-.progress {
-  margin-top: 0.5em;
+.bg-light {
+  background-color: white !important;
 }

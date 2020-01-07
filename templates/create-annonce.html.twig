@@ -1,14 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des offres
+{% block title %}Créer une annonce
 {% endblock %}
 
 {% block stylesheets %}
-	<link rel="stylesheet" href="{{ asset('liste-offres.css') }}">
+	<link rel="stylesheet" href="{{ asset('create-annonce.css') }}">
 {% endblock %}
 
 {% block body %}
-	 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="box-shadow: 0 4px 16px 0 rgba(50,56,63,0.16);">
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-light" style="box-shadow: 0 4px 16px 0 rgba(50,56,63,0.16);">
 		<a class="navbar-brand" style="color: #41A1DB; font-family: 'Montserrat', sans-serif;">Jobeet</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -22,16 +23,15 @@
 				<li class="nav-item">
 					<a class="nav-link" href="{{ path('profil-utilisateur') }}">Mon profil</a>
 				</li>
- 
+
 				<li class="nav-item">
 					<a class="nav-link" href="{{ path('liste-entreprise') }}">Liste des entreprises</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="{{ path('liste-matchs') }}">Liste des matchs</a>
 				</li>
-				<li class="nav-item active">
-					<a class="nav-link" href="{{ path('liste-offres') }}">Liste des offres
-						<span class="sr-only">(current)</span></a>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('liste-offres') }}">Liste des offres</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="{{ path('liste-candidatures') }}">Liste des candidatures</a>
@@ -40,36 +40,27 @@
 					<a class="nav-link" href="{{ path('recherche') }}">Recherche
 					</a>
 				</li>
-				<li class="nav-item">
+				<li class="nav-item active">
 					<a class="nav-link" href="{{ path('create') }}">Créer une annonce
+						<span class="sr-only">(current)</span>
 					</a>
 				</li>
 			</ul>
 		</div>
 	</nav>
+
+
 	<div class="my_container">
-		<h1 style="color: #41A1DB">Liste des offres</h1>
-		<p class="subtitle">Retrouvez les offres qui vous correspondent</p>
-		{% if not annonces %}
-			<p>Aucune offre disponible</p>
-		{% endif %}
-		{% for annonce in annonces.rows %}
-			<div class="offer">
-				{% for entreprise in entreprises.rows %}
-					{% if annonce.doc.entreprise_id == entreprise.doc._id %}
-						<h5>{{ annonce.doc.title }} - {{ entreprise.doc.name}}</h5>
-					{% endif %}
-				{% endfor %}
-				<h6 style="color: #41A1DB">Description</h6>
-				<p>{{ annonce.doc.description }}</p>
-				<h6 style="color: #41A1DB">Recruteur</h6>
-				{% for user in users.rows %}
-					{% if annonce.doc.recruteur_id == user.doc._id %}
-						<p>{{ user.doc.last_name}} {{ user.doc.name }}</p>
-					{% endif %}
-				{% endfor %}
-                <button><a href="{{ path('offre', {id : annonce.doc._id}) }}">En savoir plus</a></button>
-			</div>
-		{% endfor %}
+		<h1 style="color: #41A1DB">Créer une annonce</h1>
+
+
+		<form action="{{ path('inscription') }}" method="post" name="formulario_login">
+			<input type="text" id="title" name="_title" placeholder="Titre de l'annonce"/>
+			<br/>
+			<input type="text" id="description" name="_description" placeholder="Description de l'annonce"/>
+			<br/>
+			<input type="text" id="mail" name="_mail" value="" placeholder="Compétences requises"/>
+			<br/>
+		</form>
 	</div>
 {% endblock %}

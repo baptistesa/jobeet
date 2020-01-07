@@ -58,3 +58,7 @@ accueil:
 search:
    path: '/search'
    controller: App\Controller\RechercheController::search
+
+create:
+   path: '/create'
+   controller: App\Controller\CreateAnnonceController::displayForm

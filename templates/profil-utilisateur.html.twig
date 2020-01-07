@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block body %}
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="box-shadow: 0 4px 16px 0 rgba(50,56,63,0.16);">
 		<a class="navbar-brand" style="color: #41A1DB; font-family: 'Montserrat', sans-serif;">Jobeet</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -24,9 +24,7 @@
 						<span class="sr-only">(current)</span>
 					</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="{{ path('profil-entreprise', {id: '1'}) }}">Profil entreprise</a>
-				</li>
+ 
 				<li class="nav-item">
 					<a class="nav-link" href="{{ path('liste-entreprise') }}">Liste des entreprises</a>
 				</li>
@@ -44,14 +42,18 @@
 					<a class="nav-link" href="{{ path('recherche') }}">Recherche
 					</a>
 				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('create') }}">Créer une annonce
+					</a>
+				</li>
 			</ul>
 		</div>
 	</nav>
-	<div class="my_container col-lg-12">
+	<div class="my_container">
 		<h1 style="color: #41A1DB">Profil</h1>
 		<p>Informations concernant l'utilisateur</p>
 
-		<div class="row">
+		<div class="row" style="margin-top: 3%">
 
 			<div class="col-lg-6">
 				<div class="description">

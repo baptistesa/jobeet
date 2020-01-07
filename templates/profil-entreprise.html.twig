@@ -6,7 +6,7 @@
 	<link rel="stylesheet" href="{{ asset('profil-entreprise.css') }}">
 {% endblock %}
 {% block body %}
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="box-shadow: 0 4px 16px 0 rgba(50,56,63,0.16);">
 		<a class="navbar-brand" style="color: #41A1DB; font-family: 'Montserrat', sans-serif;">Jobeet</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -21,12 +21,8 @@
 					<a class="nav-link" href="{{ path('profil-utilisateur') }}">Mon profil</a>
 				</li>
 				<li class="nav-item active">
-					<a class="nav-link" href="{{ path('profil-entreprise', {id: '1'}) }}">Profil entreprise
-						<span class="sr-only">(current)</span>
-					</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="{{ path('liste-entreprise') }}">Liste des entreprises</a>
+					<a class="nav-link" href="{{ path('liste-entreprise') }}">Liste des entreprises
+						<span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="{{ path('liste-matchs') }}">Liste des matchs</a>
@@ -40,6 +36,10 @@
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="{{ path('recherche') }}">Recherche
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('create') }}">Créer une annonce
 					</a>
 				</li>
 			</ul>
