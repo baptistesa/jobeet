@@ -1,15 +1,10 @@
 {% extends 'base.html.twig' %}
 
-<<<<<<< HEAD
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Profil entreprise</title>
-		<link rel="stylesheet" href="{{ asset('profil-entreprise.css') }}">
-		<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-	</head>
-	<body>
+{% block title %}Liste des entreprises{% endblock %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('liste-entreprise.css') }}">
+{% endblock %}
+{% block body %}
 		<div class="container col-lg-12">
 			{% for entreprise in entreprises.rows %}
 				{% if entreprise.doc._id == id %}
@@ -28,5 +23,4 @@
 				{% endif %}
 			{% endfor %}
 		</div>
-	</body>
-</html>
+{% endblock %}
