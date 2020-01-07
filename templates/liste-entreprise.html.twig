@@ -14,7 +14,7 @@
 
 			{% for entreprise in entreprises.rows %}
 				<div class="company">
-					<a href="{{ path('profil-entreprise') }}">
+					<a href="{{ path('profil-entreprise/'~entreprise.doc._id) }}">
 						<img src="{{ entreprise.doc.image }}" class="img-thumbnail" alt="entreprise">
 						<p style="margin-top: 2px">{{ entreprise.doc.name }}</p>
 					</a>
