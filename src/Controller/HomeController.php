@@ -23,7 +23,6 @@ class HomeController extends AbstractController
         for ($i = 0; $i < count($contents); $i++) {
             $tmp_user = $contents["rows"][$i]["doc"]["mail"];
             $tmp_password = $contents["rows"][$i]["doc"]["password"];
-            var_dump($tmp_user);
             if ($tmp_user == $username && $tmp_password == $password) {
                 return $this->render('home.html.twig', array('test' => $test));
             }
