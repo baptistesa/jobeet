@@ -10,16 +10,13 @@
         <div class="container">
             <h1 style="color: #41A1DB">Liste des offres</h1>
             <p>Aucune offre disponible</p>
+            {% for annonce in annonces.rows %}
             <div class="offer">
-                <h5>Développeur</h5>
-                <p>En informatique, un développeur ou analyste programmeur est un informaticien qui réalise des logiciels et les met en œuvre à l'aide de langages de programmation.</p>
+                <h5>{{ annonce.doc.title }}</h5>
+                <p>{{ annonce.doc.description }}</p>
                 <button>En savoir plus</button>
             </div>
-            <div class="offer">
-                <h5>Chef de projet</h5>
-                <p>Le chef de projet (CDP) est la personne chargée de mener un projet et de gérer son bon déroulement. De manière générale, il anime une équipe pendant la durée du ou des divers projets dont il a la charge.</p>
-                <button>En savoir plus</button>
-            </div>
+            {% endfor %}
         </div>
     </body>
 </html>
