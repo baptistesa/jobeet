@@ -8,7 +8,8 @@ class HomeController extends AbstractController
 {
 
     public function displayHome() {
-        return $this->render('home.html.twig');
+        $test = 1;
+        return $this->render('home.html.twig', array('test' => $test));
     }
 
     public function goToLogin() {

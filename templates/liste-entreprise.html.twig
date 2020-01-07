@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -9,10 +11,46 @@
 		<div class="container">
 			<h1 style="color: #41A1DB">Liste des entreprises</h1>
 			<p>Aucune entreprise trouvée</p>
-		{% for entreprise in entreprises.rows %}
-			<p>{{ entreprise.doc.name }}</p>
-        {% endfor %}
+
+			{% for entreprise in entreprises.rows %}
+				<div class="company">
+					<a href="https://epita.fr">
+						<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgoRDNCDH_XXYlOrBKj9ZQ5ta0j_-bTHno6RT8L6IzPW2gv1WO&s" class="img-thumbnail" alt="entreprise">
+						<p style="margin-top: 2px">{{ entreprise.doc.name }}</p>
+					</a>
+				</div>
+			{% endfor %}
+
+			{# <div class="company">
+			                <a href="https://epita.fr">
+			                    <img src="https://media.licdn.com/dms/image/C560BAQE7-AyZO49i7Q/company-logo_200_200/0?e=2159024400&v=beta&t=CpUZVld10RjA3zXDfvfGWiBxAXGM9mDVmJwDH-0PQG4" class="img-thumbnail" alt="entreprise">
+			                    <p style="margin-top: 2px">3ie</p>
+			                </a>
+			            </div>
+			            <div class="company">
+			                <a href="https://epita.fr">
+			                    <img src="https://media.licdn.com/dms/image/C560BAQE7-AyZO49i7Q/company-logo_200_200/0?e=2159024400&v=beta&t=CpUZVld10RjA3zXDfvfGWiBxAXGM9mDVmJwDH-0PQG4" class="img-thumbnail" alt="entreprise">
+			                    <p style="margin-top: 2px">3ie</p>
+			                </a>
+			            </div>
+			            <div class="company">
+			                <a href="https://epita.fr">            
+			                    <img src="https://media.licdn.com/dms/image/C560BAQE7-AyZO49i7Q/company-logo_200_200/0?e=2159024400&v=beta&t=CpUZVld10RjA3zXDfvfGWiBxAXGM9mDVmJwDH-0PQG4" class="img-thumbnail" alt="entreprise">
+			                    <p style="margin-top: 2px">3ie</p>
+			                </a>
+			            </div>
+			            <div class="company">
+			                <a href="https://epita.fr">                
+			                    <img src="https://media.licdn.com/dms/image/C560BAQE7-AyZO49i7Q/company-logo_200_200/0?e=2159024400&v=beta&t=CpUZVld10RjA3zXDfvfGWiBxAXGM9mDVmJwDH-0PQG4" class="img-thumbnail" alt="entreprise">
+			                    <p style="margin-top: 2px">3ie</p>
+			                </a>
+			            </div>
+			            <div class="company">
+			                <a href="https://epita.fr">
+			                    <img src="http://www.net1901.org/image/use2/0/8473.jpg" class="img-thumbnail" alt="entreprise">
+			                    <p style="margin-top: 2px">Anciens</p>
+			                </a>
+			            </div> #}
 		</div>
-		</body>
 	</body>
 </html>
