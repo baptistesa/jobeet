@@ -34,6 +34,10 @@ home:
    path: /home
    controller: App\Controller\HomeController::displayHome
 
+offre:
+   path: /offre/{id}
+   controller: App\Controller\OffreController::displayOffre
+
 
 inscription:
    path: /inscription

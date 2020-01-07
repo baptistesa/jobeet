@@ -1,0 +1,19 @@
+.my_container {
+  background: #f9fcfc;
+  height: 100vh;
+  width: 100vw;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  padding-top: 30vh;
+}
+
+button {
+  background: #41A1DB;
+  color: white;
+  width: auto;
+  text-align: center;
+  border-radius: 20px;
+  border-color: transparent;
+  margin: auto;
+  margin-top: 5px;
+}
