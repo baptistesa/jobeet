@@ -2,26 +2,30 @@
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Profil entreprise</title>
-        <link rel="stylesheet" href="{{ asset('profil-entreprise.css') }}">
-        <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <div class="container col-lg-12">
-            <h1 style="color: #41A1DB">Nom de l'entreprise</h1>
-            <p>Informations concernant l'entreprise</p>
-            <div class="offer">
-                <h5>Développeur</h5>
-                <p>En informatique, un développeur ou analyste programmeur est un informaticien qui réalise des logiciels et les met en œuvre à l'aide de langages de programmation.</p>
-                <button>En savoir plus</button>
-            </div>
-            <div class="offer">
-                <h5>Chef de projet</h5>
-                <p>Le chef de projet (CDP) est la personne chargée de mener un projet et de gérer son bon déroulement. De manière générale, il anime une équipe pendant la durée du ou des divers projets dont il a la charge.</p>
-                <button>En savoir plus</button>
-            </div>
-        </div>
-    </body>
+	<head>
+		<meta charset="UTF-8">
+		<title>Profil entreprise</title>
+		<link rel="stylesheet" href="{{ asset('profil-entreprise.css') }}">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<div class="container col-lg-12">
+			{% for entreprise in entreprises.rows %}
+				{% if entreprise.doc._id == id %}
+					<h1 style="color: #41A1DB">entreprise.doc.name</h1>
+					<p>entreprise.doc.description</p>
+					<div class="offer">
+						<h5>Développeur</h5>
+						<p>En informatique, un développeur ou analyste programmeur est un informaticien qui réalise des logiciels et les met en œuvre à l'aide de langages de programmation.</p>
+						<button>En savoir plus</button>
+					</div>
+					<div class="offer">
+						<h5>Chef de projet</h5>
+						<p>Le chef de projet (CDP) est la personne chargée de mener un projet et de gérer son bon déroulement. De manière générale, il anime une équipe pendant la durée du ou des divers projets dont il a la charge.</p>
+						<button>En savoir plus</button>
+					</div>
+				{% endif %}
+			{% endfor %}
+		</div>
+	</body>
 </html>

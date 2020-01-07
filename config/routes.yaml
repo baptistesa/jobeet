@@ -7,7 +7,7 @@ signup:
   controller: App\Controller\SignupController::signup
 
 profil-entreprise:
-   path: /profil-entreprise
+   path: /profil-entreprise/{id}
    controller: App\Controller\ProfilEntrepriseController::displayProfilEntreprise
 
 profil-utilisateur:
