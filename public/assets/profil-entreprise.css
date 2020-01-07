@@ -6,3 +6,48 @@
   font-family: "Montserrat", sans-serif;
   padding-top: 30vh;
 }
+
+a {
+  color: black;
+}
+
+/* unvisited link */
+a:link {
+  color: gray;
+}
+
+/* mouse over link */
+a:hover {
+  color: #41A1DB;
+}
+
+/* selected link */
+a:active {
+  color: #41A1DB;
+}
+
+.offer {
+  height:11rem;
+  width: 30rem;
+  display: inline-block;
+  background: #ffffff;
+  margin: 2%;
+  border-radius: 8px;
+  padding: 1em;
+  box-shadow: 0 4px 16px 0 rgba(50, 56, 63, 0.08);
+}
+
+p {
+  font-size: small;
+}
+
+button {
+  background: #41A1DB;
+  color: white;
+  width: auto;
+  text-align: center;
+  border-radius: 20px;
+  border-color: transparent;
+  margin: auto;
+  margin-top: 5px;
+}
