@@ -11,12 +11,14 @@
             <h1 style="color: #41A1DB">Home</h1>
 
             <div class="buttons_container">
-                {% if test != 1 %}
+                {% if test == 1 %}
                     <button class="my_button"><a href="{{ path('profil-utilisateur') }}">Profil utilisateur</a></button>
                 {% endif %}
                 <button class="my_button"><a href="{{ path('profil-entreprise') }}">Profil entreprise</a></button>
                 <button class="my_button"><a href="{{ path('liste-entreprise') }}">Liste des entreprises</a></button>
                 <button class="my_button"><a href="{{ path('liste-matchs') }}">Liste des matchs</a></button>
+                <button class="my_button"><a href="{{ path('liste-offres') }}">Liste des offres</a></button>
+                <button class="my_button"><a href="{{ path('liste-candidatures') }}">Liste des candidatures</a></button>
             </div>
         </div>
 	</body>
