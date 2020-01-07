@@ -6,3 +6,7 @@
   font-family: "Montserrat", sans-serif;
   padding-top: 10vh;
 }
+
+.bg-light {
+  background-color: white !important;
+}

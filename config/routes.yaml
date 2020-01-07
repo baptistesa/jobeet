@@ -54,3 +54,7 @@ auth:
 accueil:
    path: '/accueil'
    controller: App\Controller\HomeController::accueil
+
+search:
+   path: '/search'
+   controller: App\Controller\RechercheController::search
