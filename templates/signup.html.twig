@@ -1,37 +1,35 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Inscription</title>
-		<link rel="stylesheet" href="{{ asset('signup.css') }}">
-		<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-	</head>
-	<body>
-		<div class="container">
-			<div class="buttons_container">
-				<h1 style="color: #41A1DB">Inscription</h1>
+{% extends 'base.html.twig' %}
 
+{% block title %}Inscription{% endblock %}
 
-				<form action="{{ path('inscription') }}" method="post" name="formulario_login">
-					<label for="prenom">Prénom:</label>
-					<input type="text" id="prenom" name="_prenom"/>
-					<br/>
-					<label for="nom">Nom:</label>
-					<input type="text" id="name" name="_name"/>
-					<br/>
-					<label for="username">Adresse mail:</label>
-					<input type="text" id="mail" name="_mail" value=""/>
-					<br/>
-					<label for="password">Mot de passe:</label>
-					<input type="password" id="password" name="_password"/>
-					<br/>
-					<label for="description">Description:</label>
-					<input type="text" id="description" name="_description"/>
-					<br/>
-					<input type="submit" name="login" value="S'inscrire"/>
-				</form>
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('signup.css') }}">
+{% endblock %}
 
-			</div>
+{% block body %}
+	<div class="container">
+		<div class="buttons_container">
+			<h1 style="color: #41A1DB">Inscription</h1>
+
+			<form action="{{ path('inscription') }}" method="post" name="formulario_login">
+				<label for="prenom">Prénom:</label>
+				<input type="text" id="prenom" name="_prenom"/>
+				<br/>
+				<label for="nom">Nom:</label>
+				<input type="text" id="name" name="_name"/>
+				<br/>
+				<label for="username">Adresse mail:</label>
+				<input type="text" id="mail" name="_mail" value=""/>
+				<br/>
+				<label for="password">Mot de passe:</label>
+				<input type="password" id="password" name="_password"/>
+				<br/>
+				<label for="description">Description:</label>
+				<input type="text" id="description" name="_description"/>
+				<br/>
+				<input type="submit" name="login" value="S'inscrire"/>
+			</form>
+
 		</div>
-	</body>
-</html>
+	</div>
+{% endblock %}

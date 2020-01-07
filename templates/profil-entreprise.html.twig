@@ -1,5 +1,6 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+{% extends 'base.html.twig' %}
 
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 	<head>
@@ -12,8 +13,8 @@
 		<div class="container col-lg-12">
 			{% for entreprise in entreprises.rows %}
 				{% if entreprise.doc._id == id %}
-					<h1 style="color: #41A1DB">entreprise.doc.name</h1>
-					<p>entreprise.doc.description</p>
+					<h1 style="color: #41A1DB">{{ entreprise.doc.name }}</h1>
+					<p>{{ entreprise.doc.description }}</p>
 					<div class="offer">
 						<h5>Développeur</h5>
 						<p>En informatique, un développeur ou analyste programmeur est un informaticien qui réalise des logiciels et les met en œuvre à l'aide de langages de programmation.</p>
