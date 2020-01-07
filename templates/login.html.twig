@@ -1,24 +1,11 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+{% extends 'base.html.twig' %}
+    {% block title %}Connexion{% endblock %}
 
-		<!-- jQuery library -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{  asset('login.css') }}">
+    {% endblock %}
 
-		<!-- Popper JS -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
-		<!-- Latest compiled JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
-		<title>Connexion</title>
-		<link rel="stylesheet" href="{{ asset('login.css') }}">
-		<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-	</head>
-	<body>
+	{% block body %}
 		<div class="container">
 			<h1 style="color: #41A1DB">Connexion</h1>
 			<p>Entrez vos identifiants de connexion</p>
@@ -31,7 +18,6 @@
 						<input class="form-control" type="text" id="username" name="_username" value=""/>
 					</div>
 				</div>
-				<br/>
 				<div class="form-group row justify-content-center">
 					<label class="col-2 col-form-label" for="password">Mot de passe:</label>
 					<div class="col-6">
@@ -42,6 +28,4 @@
 				<input type="submit" name="login" value="Se connecter"/>
 			</form>
 		</div>
-
-	</body>
-</html>
+	{% endblock %}

@@ -1,26 +1,24 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+{% extends 'base.html.twig' %}
 
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Liste des entreprises</title>
-		<link rel="stylesheet" href="{{ asset('liste-entreprise.css') }}">
-	</head>
-	<body>
-		<div class="container">
-			<h1 style="color: #41A1DB">Liste des entreprises</h1>
-			<p>Aucune entreprise trouvée</p>
+{% block title %}Liste des entreprises{% endblock %}
 
-			{% for entreprise in entreprises.rows %}
-				<div class="company">
-					<a href="{{ path('profil-entreprise', {id : entreprise.doc._id}) }}">
-						<img src="{{ entreprise.doc.image }}" class="img-thumbnail" alt="entreprise">
-						<p style="margin-top: 2px">{{ entreprise.doc.name }}</p>
-					</a>
-				</div>
-			{% endfor %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('liste-entreprise.css') }}">
+{% endblock %}
 
-		</div>
-	</body>
-</html>
+{% block body %}
+	<div class="container">
+		<h1 style="color: #41A1DB">Liste des entreprises</h1>
+		<p>Aucune entreprise trouvée</p>
+
+		{% for entreprise in entreprises.rows %}
+			<div class="company">
+				<a href="{{ path('profil-entreprise', {id : entreprise.doc._id}) }}">
+					<img src="{{ entreprise.doc.image }}" class="img-thumbnail" alt="entreprise">
+					<p style="margin-top: 2px">{{ entreprise.doc.name }}</p>
+				</a>
+			</div>
+		{% endfor %}
+
+	</div>
+{% endblock %}

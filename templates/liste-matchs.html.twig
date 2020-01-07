@@ -1,31 +1,19 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
+{% extends 'base.html.twig' %}
+    {% block title %}Liste des matchs{% endblock %}
 
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-
-        <!-- jQuery library -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-        <!-- Popper JS -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
-        <!-- Latest compiled JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
-        <title>Liste des matchs</title>
+    {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('liste-matchs.css') }}">
-        <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    {% endblock %}
 
+    {% block javascripts %}
         <script>
             $(function () {
                 $('[data-toggle="tooltip"]').tooltip()
             })
         </script>
-    </head>
-    <body>
+    {% endblock %}
+
+    {% block body %}
         {# Setting up a counter to know when to add a row and keeping track of the cards#}
         {% set counter = 0 %}
         <div class="container">
@@ -162,5 +150,4 @@
                 </div>
             </div>
         </div>
-    </body>
-</html>
+    {% endblock %}
