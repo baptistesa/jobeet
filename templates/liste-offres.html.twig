@@ -52,8 +52,22 @@
 		{% endif %}
 		{% for annonce in annonces.rows %}
 			<div class="offer">
+				<h6 style="color: #41A1DB">Intitulé</h6>
 				<h5>{{ annonce.doc.title }}</h5>
+				<h6 style="color: #41A1DB">Entreprise</h6>
+				{% for entreprise in entreprises.rows %}
+					{% if annonce.doc.entreprise_id == entreprise.doc._id %}
+						<p>{{ entreprise.doc.name}}</p>
+					{% endif %}
+				{% endfor %}
+				<h6 style="color: #41A1DB">Description</h6>
 				<p>{{ annonce.doc.description }}</p>
+				<h6 style="color: #41A1DB">Recruteur</h6>
+				{% for user in users.rows %}
+					{% if annonce.doc.recruteur_id == user.doc._id %}
+						<p>{{ user.doc.last_name}} {{ user.doc.name }}</p>
+					{% endif %}
+				{% endfor %}
                 <button><a href="{{ path('offre', {id : annonce.doc._id}) }}">En savoir plus</a></button>
 			</div>
 		{% endfor %}

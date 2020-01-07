@@ -4,7 +4,19 @@
   width: 100vw;
   text-align: center;
   font-family: "Montserrat", sans-serif;
-  padding-top: 30vh;
+  padding-top: 10vh;
+}
+
+.detail {
+  height:20rem;
+  width: 30rem;
+  display: inline-block;
+  background: #ffffff;
+  margin: 2%;
+  border-radius: 8px;
+  padding: 1em;
+  box-shadow: 0 4px 16px 0 rgba(50, 56, 63, 0.08);
+
 }
 
 button {
