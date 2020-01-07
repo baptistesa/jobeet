@@ -1,10 +1,14 @@
-.container {
+.my_container {
   background: #f9fcfc;
   height: 100vh;
   width: 100vw;
   text-align: center;
   font-family: "Montserrat", sans-serif;
   padding-top: 10vh;
+}
+
+.bg-light {
+  background-color: white !important;
 }
 
 .candidature {

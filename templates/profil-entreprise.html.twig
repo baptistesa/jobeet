@@ -1,26 +1,61 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des entreprises{% endblock %}
+{% block title %}Liste des entreprises
+{% endblock %}
 {% block stylesheets %}
 	<link rel="stylesheet" href="{{ asset('liste-entreprise.css') }}">
 {% endblock %}
 {% block body %}
-		<div class="container col-lg-12">
-			{% for entreprise in entreprises.rows %}
-				{% if entreprise.doc._id == id %}
-					<h1 style="color: #41A1DB">{{ entreprise.doc.name }}</h1>
-					<p>{{ entreprise.doc.description }}</p>
-					<div class="offer">
-						<h5>Développeur</h5>
-						<p>En informatique, un développeur ou analyste programmeur est un informaticien qui réalise des logiciels et les met en œuvre à l'aide de langages de programmation.</p>
-						<button>En savoir plus</button>
-					</div>
-					<div class="offer">
-						<h5>Chef de projet</h5>
-						<p>Le chef de projet (CDP) est la personne chargée de mener un projet et de gérer son bon déroulement. De manière générale, il anime une équipe pendant la durée du ou des divers projets dont il a la charge.</p>
-						<button>En savoir plus</button>
-					</div>
-				{% endif %}
-			{% endfor %}
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" style="color: #41A1DB; font-family: 'Montserrat', sans-serif;">Jobeet</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('accueil') }}">Accueil
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('profil-utilisateur') }}">Profil utilisateur</a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="{{ path('profil-entreprise', {id: '1'}) }}">Profil entreprise
+						<span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('liste-entreprise') }}">Liste des entreprises</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('liste-matchs') }}">Liste des matchs</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('liste-offres') }}">Liste des offres
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('liste-candidatures') }}">Liste des candidatures</a>
+				</li>
+			</ul>
 		</div>
+	</nav>
+	<div class="my_container col-lg-12">
+		{% for entreprise in entreprises.rows %}
+			{% if entreprise.doc._id == id %}
+				<h1 style="color: #41A1DB">{{ entreprise.doc.name }}</h1>
+				<p>{{ entreprise.doc.description }}</p>
+				<div class="offer">
+					<h5>Développeur</h5>
+					<p>En informatique, un développeur ou analyste programmeur est un informaticien qui réalise des logiciels et les met en œuvre à l'aide de langages de programmation.</p>
+					<button>En savoir plus</button>
+				</div>
+				<div class="offer">
+					<h5>Chef de projet</h5>
+					<p>Le chef de projet (CDP) est la personne chargée de mener un projet et de gérer son bon déroulement. De manière générale, il anime une équipe pendant la durée du ou des divers projets dont il a la charge.</p>
+					<button>En savoir plus</button>
+				</div>
+			{% endif %}
+		{% endfor %}
+	</div>
 {% endblock %}

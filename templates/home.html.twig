@@ -8,33 +8,45 @@
 {% endblock %}
 
 {% block body %}
-	<nav class="navbar navbar-light bg-light" style="background: red">
-		<span class="navbar-brand mb-0 h1">Jobeet</span>
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" style="color: #41A1DB; font-family: 'Montserrat', sans-serif;">Jobeet</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item active">
+					<a class="nav-link" href="#">Accueil
+						<span class="sr-only">(current)</span>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('profil-utilisateur') }}">Profil utilisateur</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('profil-entreprise', {id: '1'}) }}">Profil entreprise</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('liste-entreprise') }}">Liste des entreprises</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('liste-matchs') }}">Liste des matchs</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('liste-offres') }}">Liste des offres</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('liste-candidatures') }}">Liste des candidatures</a>
+				</li>
+			</ul>
+		</div>
 	</nav>
+
+
 	<div class="my_container">
 		<h1 style="color: #41A1DB">Home</h1>
 
-		<div class="buttons_container">
-			{% if test == 1 %}
-				<button class="my_button">
-					<a href="{{ path('profil-utilisateur') }}">Profil utilisateur</a>
-				</button>
-			{% endif %}
-			<button class="my_button">
-				<a id="1" href="{{ path('profil-entreprise', {id: '1'}) }}">Profil entreprise</a>
-			</button>
-			<button class="my_button">
-				<a href="{{ path('liste-entreprise') }}">Liste des entreprises</a>
-			</button>
-			<button class="my_button">
-				<a href="{{ path('liste-matchs') }}">Liste des matchs</a>
-			</button>
-			<button class="my_button">
-				<a href="{{ path('liste-offres') }}">Liste des offres</a>
-			</button>
-			<button class="my_button">
-				<a href="{{ path('liste-candidatures') }}">Liste des candidatures</a>
-			</button>
-		</div>
+		
 	</div>
 {% endblock %}
