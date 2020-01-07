@@ -48,7 +48,9 @@
 	</nav>
 	<div class="my_container">
 		<h1 style="color: #41A1DB">Liste des entreprises</h1>
-		<p>Aucune entreprise trouvée</p>
+		{% if not entreprises %}
+			<p>Aucune entreprise disponible</p>
+		{% endif %}
 
 		{% for entreprise in entreprises.rows %}
 			<div class="company">
