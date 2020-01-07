@@ -15,7 +15,7 @@
 			{% for entreprise in entreprises.rows %}
 				<div class="company">
 					<a href="https://epita.fr">
-						<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgoRDNCDH_XXYlOrBKj9ZQ5ta0j_-bTHno6RT8L6IzPW2gv1WO&s" class="img-thumbnail" alt="entreprise">
+						<img src="{{ entreprise.doc.image }}" class="img-thumbnail" alt="entreprise">
 						<p style="margin-top: 2px">{{ entreprise.doc.name }}</p>
 					</a>
 				</div>
