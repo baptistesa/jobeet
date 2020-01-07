@@ -44,7 +44,8 @@ p {
 button {
   background: #41A1DB;
   color: white;
-  width: auto;
+  width: 9em;
+  height: 3em;
   text-align: center;
   border-radius: 20px;
   border-color: transparent;
