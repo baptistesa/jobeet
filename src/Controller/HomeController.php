@@ -30,6 +30,32 @@ class HomeController extends AbstractController
         return $this->render('login.html.twig');
     }
 
+    public function inscription(Request $request)
+    {
+        $test = 1;
+        $prenom = $request->request->get('_prenom');
+        $nom = $request->request->get('_nom');
+        $mail = $request->request->get('_mail');
+        $password = $request->request->get('_password');
+        $description = $request->request->get('_description');
+
+        $client = HttpClient::create();
+        $response = $client->request('POST', 'https://9350ba5d.ngrok.io/utilisateurs', [
+            "headers" => [
+                "Content-Type" => "application/json"
+            ],
+            'body' => [
+                "name" => $prenom,
+                "last_name" => $nom,
+                "mail" => $mail,
+                "password" => $password,
+                "description" => $description
+            ]
+        ]);
+        $contents = $response->getContent();
+        return $this->render('home.html.twig', array('test' => $test));
+    }
+
     public function goToLogin()
     {
         return $this->redirectToRoute('login');

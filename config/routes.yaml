@@ -34,6 +34,11 @@ home:
    path: /home
    controller: App\Controller\HomeController::displayHome
 
+
+inscription:
+   path: /inscription
+   controller: App\Controller\HomeController::inscription
+
 auth:
    path: /
    controller: App\Controller\AuthController::displayAuth
