@@ -14,7 +14,7 @@
                 {% if test == 1 %}
                     <button class="my_button"><a href="{{ path('profil-utilisateur') }}">Profil utilisateur</a></button>
                 {% endif %}
-                <button class="my_button"><a href="{{ path('profil-entreprise') }}">Profil entreprise</a></button>
+                <button class="my_button"><a id="1" href="{{ path('profil-entreprise', {id: '1'}) }}">Profil entreprise</a></button>
                 <button class="my_button"><a href="{{ path('liste-entreprise') }}">Liste des entreprises</a></button>
                 <button class="my_button"><a href="{{ path('liste-matchs') }}">Liste des matchs</a></button>
                 <button class="my_button"><a href="{{ path('liste-offres') }}">Liste des offres</a></button>
