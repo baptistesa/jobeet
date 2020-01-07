@@ -32,6 +32,7 @@ class HomeController extends AbstractController
                 $session->set('last_name', $contents["rows"][$i]["doc"]["last_name"]);
                 $session->set('description', $contents["rows"][$i]["doc"]["description"]);
                 $session->set('is_recruteur', $contents["rows"][$i]["doc"]["is_recruteur"]);
+                $session->set('id', $contents["rows"][$i]["doc"]["_id"]);
                 return $this->render('home.html.twig', array('test' => $test));
             }
         }
@@ -62,14 +63,16 @@ class HomeController extends AbstractController
             ],
             'body' => json_encode($data)
         ]);
-        $contents = $response->getContent();
+        $contents = $response->toArray();
         $session = new Session();
         $session->start();
+        $session->set('id', $contents["id"]);
         $session->set('mail', $mail);
         $session->set('name', $prenom);
         $session->set('last_name', $nom);
         $session->set('description', $description);
         $session->set('is_recruteur', false);
+        
         return $this->render('home.html.twig', array('test' => $test));
     }
 

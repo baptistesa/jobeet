@@ -1,9 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mon profil{% endblock %}
+{% block title %}Mon profil
+{% endblock %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('profil-utilisateur.css') }}">
+	<link rel="stylesheet" href="{{ asset('profil-utilisateur.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -20,7 +21,8 @@
 				</li>
 				<li class="nav-item active">
 					<a class="nav-link" href="{{ path('profil-utilisateur') }}">Mon profil
-						<span class="sr-only">(current)</span></a>
+						<span class="sr-only">(current)</span>
+					</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="{{ path('profil-entreprise', {id: '1'}) }}">Profil entreprise</a>
@@ -45,14 +47,82 @@
 			</ul>
 		</div>
 	</nav>
-    <div class="my_container col-lg-12">
-        <h1 style="color: #41A1DB">Profil</h1>
-        <p>Informations concernant l'utilisateur</p>
-            <h4>{{ prenom }} {{ nom }}</h4>
-        <div class="description">
-            <h4>Description</h4>
-            <p>{{ description }}</p>
-            <button>Modifier</button>
-        </div>
-    </div>
+	<div class="my_container col-lg-12">
+		<h1 style="color: #41A1DB">Profil</h1>
+		<p>Informations concernant l'utilisateur</p>
+
+		<div class="row">
+
+			<div class="col-lg-6">
+				<div class="description">
+					<h4>{{ prenom }}
+						{{ nom }}</h4>
+					<div>
+						<p>{{ description }}</p>
+						<button>Modifier</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="description">
+					<h4>{{ prenom }}
+						{{ nom }}</h4>
+					<div>
+						<p>{{ description }}</p>
+						<button>Modifier</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row" style="margin-top: 2%">
+			<div class="col-lg-6">
+				<div class="description">
+					<h4>Mes experiences</h4>
+
+					{% for user in utilisateurs.rows %}
+						{% if user.doc._id == id %}
+							{% for experience in user.doc.experiences %}
+								<div class="my_experience">
+									<h5>{{ experience.title }}</h5>
+									<span>{{ experience.start_date }}
+										-
+										{{ experience.end_date }}</span>
+									<p>{{ experience.entreprise }}</p>
+									<br>
+									<p>{{ experience.description }}</p>
+								</div>
+								<hr>
+							{% endfor %}
+						{% endif %}
+					{% endfor %}
+
+				</div>
+			</div>
+
+			<div class="col-lg-6">
+				<div class="description">
+					<h4>Mes formations</h4>
+
+					{% for user in utilisateurs.rows %}
+						{% if user.doc._id == id %}
+							{% for formation in user.doc.formations %}
+								<div class="my_experience">
+									<h5>{{ formation.title }}</h5>
+									<span>{{ formation.start_date }}
+										-
+										{{ formation.end_date }}</span>
+									<p>{{ formation.ecole }}</p>
+									<br>
+									<p>{{ formation.description }}</p>
+								</div>
+								<hr>
+							{% endfor %}
+						{% endif %}
+					{% endfor %}
+
+				</div>
+			</div>
+
+		</div>
+	</div>
 {% endblock %}

@@ -4,19 +4,28 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpClient\HttpClient;
 
 class ProfilUtilisateurController extends AbstractController
 {
 
-    public function displayProfilUtilisateur() {
+    public function displayProfilUtilisateur()
+    {
         $session = new Session();
         $session->start();
-        
+
+        $client = HttpClient::create();
+        $response = $client->request('GET', 'https://2ef89cb3.ngrok.io/utilisateurs/_all_docs?include_docs=true');
+        $contents = $response->toArray();
+
+
         return $this->render('profil-utilisateur.html.twig', [
             "prenom" => $session->get('name'),
             "nom" => $session->get('last_name'),
             "mail" => $session->get('mail'),
-            "description" => $session->get('description')
+            "id" => $session->get('id'),
+            "description" => $session->get('description'),
+            "utilisateurs" => $contents
         ]);
     }
 }
