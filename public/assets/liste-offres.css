@@ -16,7 +16,7 @@ a {
 }
 
 .offer {
-  height:11rem;
+  height:10rem;
   width: 30rem;
   display: inline-block;
   background: #ffffff;
@@ -34,7 +34,7 @@ button {
   background: #41A1DB;
   color: white;
   width: 9em;
-  height: 3em;
+  height: 2.5em;
   text-align: center;
   border-radius: 20px;
   border-color: transparent;
