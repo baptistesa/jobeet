@@ -48,7 +48,7 @@
 			<div class="offer">
 				<h5>{{ annonce.doc.title }}</h5>
 				<p>{{ annonce.doc.description }}</p>
-				<button>En savoir plus</button>
+                <button><a href="{{ path('offre', {id : annonce.doc._id}) }}">En savoir plus</a></button>
 			</div>
 		{% endfor %}
 	</div>

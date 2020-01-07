@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Offre d'emploi
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('offre.css') }}">
+{% endblock %}
+
+{% block body %}
+	{% for annonce in annonces.rows %}
+		{% if annonce.doc._id == id %}
+			<div class="my_container col-lg-12">
+				<h1 style="color: #41A1DB">{{ annonce.doc.title }}</h1>
+				<div class="description">
+					<h4 style="color: #41A1DB">Description</h4>
+					<p>{{ annonce.doc.description }}
+					</p>
+					<button>Modifier</button>
+				</div>
+			</div>
+		{% endif %}
+	{% endfor %}
+{% endblock %}
