@@ -9,7 +9,7 @@
 
 {% block body %}
 
-	 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="box-shadow: 0 4px 16px 0 rgba(50,56,63,0.16);">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light" style="box-shadow: 0 4px 16px 0 rgba(50,56,63,0.16);">
 		<a class="navbar-brand" style="color: #41A1DB; font-family: 'Montserrat', sans-serif;">Jobeet</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -24,7 +24,7 @@
 				<li class="nav-item">
 					<a class="nav-link" href="{{ path('profil-utilisateur') }}">Mon profil</a>
 				</li>
- 
+
 				<li class="nav-item">
 					<a class="nav-link" href="{{ path('liste-entreprise') }}">Liste des entreprises</a>
 				</li>
@@ -42,10 +42,10 @@
 					</a>
 				</li>
 				{% if is_recruteur %}
-				<li class="nav-item">
-					<a class="nav-link" href="{{ path('create') }}">Créer une annonce
-					</a>
-				</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('create') }}">Créer une annonce
+						</a>
+					</li>
 				{% endif %}
 			</ul>
 		</div>
@@ -53,8 +53,12 @@
 
 
 	<div class="my_container">
-		<h1 style="color: #41A1DB">Home</h1>
+		<h1 style="color: #41A1DB">Accueil</h1>
 
-		
+		<div class="row">
+			<div class="notifications col-lg-6">
+				<h1>Mes dernières notifications</h1>
+			</div>
+		</div>
 	</div>
 {% endblock %}

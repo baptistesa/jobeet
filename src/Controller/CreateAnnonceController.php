@@ -43,8 +43,8 @@ class CreateAnnonceController extends AbstractController
                 }
             }
             $percent_match = $comepetences_done * 100 / $total_competences;
-            if ($percent_match >= 75) {
-                array_push($matches, $current_id_user);
+            if ($percent_match >= 75 && $contents_user["rows"][$i]["doc"]["is_actif"]) {
+                array_push($matches, (object) ['id_user' => $current_id_user, 'percent_match' => $percent_match]);
             }
         }
 

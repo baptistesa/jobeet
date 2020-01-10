@@ -1,153 +1,161 @@
 {% extends 'base.html.twig' %}
-    {% block title %}Liste des matchs{% endblock %}
+{% block title %}Liste des matchs
+{% endblock %}
 
-    {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('liste-matchs.css') }}">
-    {% endblock %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('liste-matchs.css') }}">
+{% endblock %}
 
-    {% block javascripts %}
-        <script>
-            $(function () {
-                $('[data-toggle="tooltip"]').tooltip()
-            })
-        </script>
-    {% endblock %}
+{% block javascripts %}
+	<script>
+		$(function () {
+$('[data-toggle="tooltip"]').tooltip()
+})
+	</script>
+{% endblock %}
 
-    {% block body %}
-        {# Setting up a counter to know when to add a row and keeping track of the cards#}
-        {% set counter = 0 %}
-        <div class="my_container">
-            <h1 style="color: #41A1DB">Liste des matchs</h1>
+{% block body %}
 
-            {# Iterating on the matches #}
-            {% for match in matches %}
-                {# 3 cards per row ==> if counter % 3 == 0, we are on a new row #}
-                {% if counter % 3 == 0 %}
-                    <div class="row">
-                {% endif %}
-                        {# Putting the card #}
-                        <div class="col-4">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h5 class="card-title"><a href="#">{{ match.doc.offerName }}</a></h5>
-                                </div>
-                                <div class="card-body">
-                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur</p>
-                                    <div class="row justify-content-between">
-                                        <div class="col-4">
-                                            <p><b><u>Match %</u></b> : </p>
-                                        </div>
-                                        <div class="col">
-                                            <div class="progress" data-toggle="tooltip" data-placement="bottom" title="{{ match.doc.offerMatch }}%">
-                                                <div class="progress-bar bg-warning" role="progressbar" style="width: {{ match.doc.offerMatch }}%"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                {# If counter % 3 == 2, we finished filling the row so we close it and add a break before starting the next one#}
-                {% if counter % 3 == 2 %}
-                    </div>
-                    <br>
-                {% endif %}
-                {# Incrementing counter #}
-                {% set counter = counter + 1 %}
-            {% endfor %}
-            {# Instance where we are in the middle of filling a row but run out of matches so we need to close the row#}
-            {% if counter % 3 != 2 %}
-                </div>
-            {% endif %}
 
-            {# No matches were found, the counter stayed at 0 #}
-            {% if counter == 0 %}
-                <p>Aucun match disponible</p>
-            {% endif %}
+	<nav class="navbar navbar-expand-lg navbar-light bg-light" style="box-shadow: 0 4px 16px 0 rgba(50,56,63,0.16);">
+		<a class="navbar-brand" style="color: #41A1DB; font-family: 'Montserrat', sans-serif;">Jobeet</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('accueil') }}">Accueil
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('profil-utilisateur') }}">Mon profil</a>
+				</li>
 
-            <div class="row">
-                <div class="col-4">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="card-title"><a href="#">Match #1</a></h5>
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">Lorem ipsum dolor sit amet consectetur</p>
-                            <div class="row justify-content-between">
-                                <div class="col-4">
-                                    <p><b><u>Match %</u></b> : </p>
-                                </div>
-                                <div class="col">
-                                    <div class="progress" data-toggle="tooltip" data-placement="bottom" title="50%">
-                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 50%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="card-title"><a href="#">Match #2</a></h5>
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">Lorem ipsum dolor sit amet consectetur</p>
-                            <div class="row justify-content-between">
-                                <div class="col-4">
-                                    <p><b><u>Match %</u></b> : </p>
-                                </div>
-                                <div class="col">
-                                    <div class="progress" data-toggle="tooltip" data-placement="bottom" title="75%">
-                                        <div class="progress-bar bg-success" role="progressbar" style="width: 75%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="card-title"><a href="#">Match #3</a></h5>
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">Lorem ipsum dolor sit amet consectetur</p>
-                            <div class="row justify-content-between">
-                                <div class="col-4">
-                                    <p><b><u>Match %</u></b> : </p>
-                                </div>
-                                <div class="col">
-                                    <div class="progress" data-toggle="tooltip" data-placement="bottom" title="10%">
-                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 10%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col-4">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="card-title"><a href="#">Match #1</a></h5>
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">Lorem ipsum dolor sit amet consectetur</p>
-                            <div class="row justify-content-between">
-                                <div class="col-4">
-                                    <p><b><u>Match %</u></b> : </p>
-                                </div>
-                                <div class="col">
-                                    <div class="progress" data-toggle="tooltip" data-placement="bottom" title="50%">
-                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 50%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    {% endblock %}
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('liste-entreprise') }}">Liste des entreprises
+					</a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="{{ path('liste-matchs') }}">Liste des matchs
+						<span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('liste-offres') }}">Liste des offres</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('liste-candidatures') }}">Liste des candidatures</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('recherche') }}">Recherche
+					</a>
+				</li>
+				{% if is_recruteur %}
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('create') }}">Créer une annonce
+						</a>
+					</li>
+				{% endif %}
+			</ul>
+		</div>
+	</nav>
+
+
+	<div class="my_container">
+		<h1 style="color: #41A1DB">Liste des matchs</h1>
+		{% if is_recruteur == false %}
+			<p class="subtitle">Retrouvez les annonces matchées</p>
+		{% endif %}
+
+		{% if is_recruteur %}
+			<p class="subtitle">Retrouvez les candidats matchées</p>
+		{% endif %}
+
+		{% if is_recruteur %}
+			<div class="row" style="margin-top: 5%">
+				<div class="col-4">
+					<div class="card">
+						<div class="card-header">
+							<h5 class="card-title">
+								<a href="#">Match #1</a>
+							</h5>
+						</div>
+						<div class="card-body">
+							<p class="card-text">Lorem ipsum dolor sit amet consectetur</p>
+							<div class="row justify-content-between">
+								<div class="col-4">
+									<p>
+										<b>
+											<u>Match</u>
+										</b>
+										:
+									</p>
+								</div>
+								<div class="col">
+									<div class="progress" data-toggle="tooltip" data-placement="bottom" title="50%">
+										<div class="progress-bar bg-warning" role="progressbar" style="width: 50%"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+
+
+		{% if is_recruteur == false %}
+			<div class="row" style="margin-top: 5%">
+
+				{% for annonce in annonces %}
+
+					<div class="col-4">
+						<div class="card">
+							<div class="card-header">
+								<h5 class="card-title">
+									<a href="#">{{ annonce.annonce.title }}</a>
+								</h5>
+							</div>
+							<div class="card-body">
+								<p class="card-text">{{ annonce.annonce.description }}</p>
+								<div class="row justify-content-between">
+									<div class="col-4">
+										<p>
+											<b>
+												<u>Match</u>
+											</b>
+											:
+										</p>
+									</div>
+									{% if annonce.percent_match >= 75 and annonce.percent_match < 85 %}
+										<div class="col">
+											<div class="progress" data-toggle="tooltip" data-placement="bottom" title={{annonce.percent_match}}>
+												<div class="progress-bar bg-alert" role="progressbar" style="width: 80%"></div>
+											</div>
+										</div>
+									{% endif %}
+									{% if annonce.percent_match >= 85 and annonce.percent_match < 95 %}
+										<div class="col">
+											<div class="progress" data-toggle="tooltip" data-placement="bottom" title={{annonce.percent_match}}>
+												<div class="progress-bar bg-alert" role="progressbar" style="width: 90%"></div>
+											</div>
+										</div>
+									{% endif %}
+									{% if annonce.percent_match >= 95 and annonce.percent_match <= 100 %}
+										<div class="col">
+											<div class="progress" data-toggle="tooltip" data-placement="bottom" title={{annonce.percent_match}}>
+												<div class="progress-bar bg-alert" role="progressbar" style="width: 98%"></div>
+											</div>
+										</div>
+									{% endif %}
+								</div>
+							</div>
+						</div>
+					</div>
+
+				{% endfor %}
+
+			</div>
+		{% endif %}
+	</div>
+{% endblock %}

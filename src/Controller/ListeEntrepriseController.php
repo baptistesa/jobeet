@@ -19,7 +19,7 @@ class ListeEntrepriseController extends AbstractController
         // dd($contents);
         return $this->render('liste-entreprise.html.twig', [
             'entreprises' => $contents,
-            'is_recruteur' => array("is_recruteur" => $session->get("is_recruteur"))
+            'is_recruteur' => $session->get("is_recruteur")
         ]);
     }
 }

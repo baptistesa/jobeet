@@ -43,10 +43,10 @@
 					</a>
 				</li>
 				{% if is_recruteur %}
-				<li class="nav-item">
-					<a class="nav-link" href="{{ path('create') }}">Créer une annonce
-					</a>
-				</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('create') }}">Créer une annonce
+						</a>
+					</li>
 				{% endif %}
 			</ul>
 		</div>
@@ -65,6 +65,12 @@
 						<p>{{ description }}</p>
 						<button>Modifier</button>
 					</div>
+					<form>
+						<div class="form-check">
+							<input type="checkbox" class="form-check-input" id="exampleCheck1" checked="true">
+							<label class="form-check-label" for="exampleCheck1">Profil actif</label>
+						</div>
+					</form>
 				</div>
 			</div>
 			<div class="col-lg-6">
