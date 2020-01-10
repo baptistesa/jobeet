@@ -63,7 +63,7 @@
 		</form>
 		<h4 style="color: #41A1DB">Entreprise</h4>
 		<row>
-			{% for entreprise in entreprises.rows %}
+			{% for entreprise in entreprises %}
 				<div class="entreprise">
 					<p>{{ entreprise.doc.name}}</p>
 					<button>
@@ -74,7 +74,7 @@
 		</row>
 		<h4 style="color: #41A1DB">Annonces</h4>
 		<row>
-			{% for annonce in annonces.rows %}
+			{% for annonce in annonces %}
 				<div class="annonce">
 					<h5>{{ annonce.doc.title }}</h5>
 					<button>
@@ -85,7 +85,7 @@
 		</row>
 		<h4 style="color: #41A1DB">Utilisateurs</h4>
 		<row>
-			{% for user in users.rows %}
+			{% for user in users %}
 				<div class="user">
 					<p>{{ user.doc.last_name}}
 						{{ user.doc.name }}</p>
