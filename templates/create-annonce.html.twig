@@ -51,15 +51,18 @@
 
 
 	<div class="my_container">
+		{% if display_info %}
+			<p>Annonce ajoutée avec succès !</p>
+		{% endif %}
 		<h1 style="color: #41A1DB">Créer une annonce</h1>
 
 
-		<form action="{{ path('inscription') }}" method="post" name="formulario_login">
+		<form action="{{ path('post-annonce') }}" method="post" name="formulaire_annonce">
 			<input type="text" id="title" name="_title" placeholder="Titre de l'annonce"/>
 			<br/>
 			<input type="text" id="description" name="_description" placeholder="Description de l'annonce"/>
 			<br/>
-			<input type="text" id="mail" name="_mail" value="" placeholder="Compétences requises"/>
+			<input type="text" id="mail" name="_competences" value="" placeholder="Compétences requises"/>
 			<br/>
 			<input type="submit" name="login" value="Ajouter l'annonce"/>
 		</form>

@@ -62,3 +62,8 @@ search:
 create:
    path: '/create'
    controller: App\Controller\CreateAnnonceController::displayForm
+
+
+post-annonce:
+   path: '/post-annonce'
+   controller: App\Controller\CreateAnnonceController::postForm

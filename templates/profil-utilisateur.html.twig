@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block body %}
-	 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="box-shadow: 0 4px 16px 0 rgba(50,56,63,0.16);">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light" style="box-shadow: 0 4px 16px 0 rgba(50,56,63,0.16);">
 		<a class="navbar-brand" style="color: #41A1DB; font-family: 'Montserrat', sans-serif;">Jobeet</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -24,7 +24,7 @@
 						<span class="sr-only">(current)</span>
 					</a>
 				</li>
- 
+
 				<li class="nav-item">
 					<a class="nav-link" href="{{ path('liste-entreprise') }}">Liste des entreprises</a>
 				</li>
@@ -42,10 +42,12 @@
 					<a class="nav-link" href="{{ path('recherche') }}">Recherche
 					</a>
 				</li>
+				{% if is_recruteur %}
 				<li class="nav-item">
 					<a class="nav-link" href="{{ path('create') }}">Créer une annonce
 					</a>
 				</li>
+				{% endif %}
 			</ul>
 		</div>
 	</nav>
@@ -67,12 +69,17 @@
 			</div>
 			<div class="col-lg-6">
 				<div class="description">
-					<h4>{{ prenom }}
-						{{ nom }}</h4>
-					<div>
-						<p>{{ description }}</p>
-						<button>Modifier</button>
-					</div>
+					<h4>Mes compétences</h4>
+
+					{% for user in utilisateurs.rows %}
+						{% if user.doc._id == id %}
+							{% for competence in user.doc.competences %}
+								<div class="competence">
+									<p>{{ competence }}</p>
+								</div>
+							{% endfor %}
+						{% endif %}
+					{% endfor %}
 				</div>
 			</div>
 		</div>

@@ -12,7 +12,6 @@ class HomeController extends AbstractController
 {
     public function displayHome(Request $request)
     {
-        $test = 1;
         $username = $request->request->get('_username');
         $password = $request->request->get('_password');
 
@@ -21,7 +20,7 @@ class HomeController extends AbstractController
         $contents = $response->toArray();
 
 
-        for ($i = 0; $i < count($contents); $i++) {
+        for ($i = 0; $i < count($contents["rows"]); $i++) {
             $tmp_user = $contents["rows"][$i]["doc"]["mail"];
             $tmp_password = $contents["rows"][$i]["doc"]["password"];
             if ($tmp_user == $username && $tmp_password == $password) {
@@ -32,8 +31,12 @@ class HomeController extends AbstractController
                 $session->set('last_name', $contents["rows"][$i]["doc"]["last_name"]);
                 $session->set('description', $contents["rows"][$i]["doc"]["description"]);
                 $session->set('is_recruteur', $contents["rows"][$i]["doc"]["is_recruteur"]);
+                $session->set('entreprise_id', $contents["rows"][$i]["doc"]["entreprise_id"]);
                 $session->set('id', $contents["rows"][$i]["doc"]["_id"]);
-                return $this->render('home.html.twig', array('test' => $test));
+                $is_recruteur = false;
+                if ($contents["rows"][$i]["doc"]["is_recruteur"])
+                    $is_recruteur = true;
+                return $this->render('home.html.twig', array('is_recruteur' => $is_recruteur));
             }
         }
         return $this->render('login.html.twig');
@@ -41,7 +44,6 @@ class HomeController extends AbstractController
 
     public function inscription(Request $request)
     {
-        $test = 1;
         $prenom = $request->request->get('_prenom');
         $nom = $request->request->get('_nom');
         $mail = $request->request->get('_mail');
@@ -72,13 +74,15 @@ class HomeController extends AbstractController
         $session->set('last_name', $nom);
         $session->set('description', $description);
         $session->set('is_recruteur', false);
-        
-        return $this->render('home.html.twig', array('test' => $test));
+
+        return $this->render('home.html.twig', array('is_recruteur' => false));
     }
 
     public function accueil(Request $request)
     {
-        return $this->render('home.html.twig');
+        $session = new Session();
+        $session->start();
+        return $this->render('home.html.twig', array("is_recruteur" => $session->get('is_recruteur')));
     }
 
     public function goToLogin()
