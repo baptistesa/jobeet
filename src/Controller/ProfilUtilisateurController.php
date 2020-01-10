@@ -25,7 +25,8 @@ class ProfilUtilisateurController extends AbstractController
             "mail" => $session->get('mail'),
             "id" => $session->get('id'),
             "description" => $session->get('description'),
-            "utilisateurs" => $contents
+            "utilisateurs" => $contents,
+            "is_recruteur" => $session->get('is_recruteur')
         ]);
     }
 }

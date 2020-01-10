@@ -45,3 +45,17 @@ button {
   background: white;
   margin-top: 5%;
 }
+
+.competence {
+  background: #41a1db;
+  width: 90px;
+  height: 2rem;
+  padding: 0.5%;
+  margin: 1%;
+  text-align: center;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  border-radius: 20px;
+  display: inline-block;
+  font-weight: bold;
+}

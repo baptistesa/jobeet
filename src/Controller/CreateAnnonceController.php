@@ -10,44 +10,64 @@ use Symfony\Component\HttpFoundation\Session\Session;
 
 class CreateAnnonceController extends AbstractController
 {
-    public function displayForm(Request $request) {
-        return $this->render('create-annonce.html.twig');
+    public function displayForm(Request $request)
+    {
+        return $this->render('create-annonce.html.twig', array('display_info' => false));
     }
 
     public function postForm(Request $request)
     {
-        $test = 1;
-        $prenom = $request->request->get('_prenom');
-        $nom = $request->request->get('_nom');
-        $mail = $request->request->get('_mail');
-        $password = $request->request->get('_password');
-        $description = $request->request->get('_description');
+        $session = new Session();
+        $session->start();
 
-        $data = array(
-            'name' => $prenom,
-            'last_name' => $nom,
-            'mail' => $mail,
-            'password' => $password,
-            'description' => $description
+        $title = $request->request->get('_title');
+        $description = $request->request->get('_description');
+        $competences = explode(' ', $request->request->get('_competences'));
+
+
+        $client_user = HttpClient::create();
+        $response_user = $client_user->request('GET', 'https://56035fdf.ngrok.io/utilisateurs/_all_docs?include_docs=true');
+        $contents_user = $response_user->toArray();
+
+        $matches = [];
+
+        $total_competences = count($competences);
+        for ($i = 0; $i < count($contents_user["rows"]); ++$i) {
+            $current_id_user = $contents_user["rows"][$i]["doc"]["_id"];
+
+            $comepetences_done = 0;
+            for ($j = 0; $j < count($contents_user["rows"][$i]["doc"]["competences"]); $j++) {
+                for ($k = 0; $k < count($competences); $k++) {
+                    if ($contents_user["rows"][$i]["doc"]["competences"][$j] == $competences[$k])
+                        $comepetences_done++;
+                }
+            }
+            $percent_match = $comepetences_done * 100 / $total_competences;
+            if ($percent_match >= 75) {
+                array_push($matches, $current_id_user);
+            }
+        }
+
+
+        $annonce = array(
+            'title' => $title,
+            'description' => $description,
+            'competences' => $competences,
+            'entreprise_id' => $session->get("entreprise_id"),
+            'recruteur_id' => $session->get("id"),
+            "postulants" => [],
+            "matches" => $matches
         );
 
         $client = HttpClient::create();
-        $response = $client->request('POST', 'https://56035fdf.ngrok.io/utilisateurs', [
+        $response = $client->request('POST', 'https://56035fdf.ngrok.io/annonces', [
             "headers" => [
                 "Content-Type" => "application/json"
             ],
-            'body' => json_encode($data)
+            'body' => json_encode($annonce)
         ]);
         $contents = $response->toArray();
-        $session = new Session();
-        $session->start();
-        $session->set('id', $contents["id"]);
-        $session->set('mail', $mail);
-        $session->set('name', $prenom);
-        $session->set('last_name', $nom);
-        $session->set('description', $description);
-        $session->set('is_recruteur', false);
-        
-        return $this->render('home.html.twig', array('test' => $test));
+
+        return $this->render('create-annonce.html.twig', array('display_info' => true));
     }
 }
