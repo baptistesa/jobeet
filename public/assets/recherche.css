@@ -2,9 +2,17 @@
   background: #f9fcfc;
   height: 100vh;
   width: 100vw;
-  text-align: center;
   font-family: "Montserrat", sans-serif;
-  padding-top: 10vh;
+  padding: 1%;
+}
+
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.subtitle {
+  font-size: 14px;
 }
 
 .bg-light {
