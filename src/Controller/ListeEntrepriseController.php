@@ -11,7 +11,7 @@ class ListeEntrepriseController extends AbstractController
     public function displayListeEntreprise()
     {
         $client = HttpClient::create();
-        $response = $client->request('GET', 'https://2ef89cb3.ngrok.io/entreprises/_all_docs?include_docs=true');
+        $response = $client->request('GET', 'https://56035fdf.ngrok.io/entreprises/_all_docs?include_docs=true');
         $contents = $response->toArray();
         // dd($contents);
         return $this->render('liste-entreprise.html.twig', [
