@@ -12,13 +12,13 @@ class RechercheController extends AbstractController
     public function displayRecherche()
     {
         $client = HttpClient::create();
-        $response = $client->request('GET', 'https://56035fdf.ngrok.io/annonces/_all_docs?include_docs=true');
+        $response = $client->request('GET', 'https://20678575.ngrok.io/annonces/_all_docs?include_docs=true');
         $annonces_rows = $response->toArray();
         $contents = $annonces_rows["rows"];
-        $respuser = $client->request('GET', 'https://56035fdf.ngrok.io/utilisateurs/_all_docs?include_docs=true');
+        $respuser = $client->request('GET', 'https://20678575.ngrok.io/utilisateurs/_all_docs?include_docs=true');
         $users_rows = $respuser->toArray();
         $users = $users_rows["rows"];
-        $respentreprise = $client->request('GET', 'https://56035fdf.ngrok.io/entreprises/_all_docs?include_docs=true');
+        $respentreprise = $client->request('GET', 'https://20678575.ngrok.io/entreprises/_all_docs?include_docs=true');
         $entreprises_rows = $respentreprise->toArray();
         $entreprises = $entreprises_rows["rows"];
         return $this->render('recherche.html.twig', [
@@ -31,9 +31,9 @@ class RechercheController extends AbstractController
     public function search(Request $request)
     {
         $client = HttpClient::create();
-        $response = $client->request('GET', 'https://56035fdf.ngrok.io/annonces/_all_docs?include_docs=true');
+        $response = $client->request('GET', 'https://20678575.ngrok.io/annonces/_all_docs?include_docs=true');
         $contents = $response->toArray();
-        $respuser = $client->request('GET', 'https://56035fdf.ngrok.io/utilisateurs/_all_docs?include_docs=true');
+        $respuser = $client->request('GET', 'https://20678575.ngrok.io/utilisateurs/_all_docs?include_docs=true');
         $users = $respuser->toArray();
         $respentreprise = $client->request('GET', 'https://56035fdf.ngrok.io/entreprises/_all_docs?include_docs=true');
         $entreprises = $respentreprise->toArray();
