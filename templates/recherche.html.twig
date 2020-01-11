@@ -41,10 +41,12 @@
 						<span class="sr-only">(current)</span>
 					</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="{{ path('create') }}">Créer une annonce
-					</a>
-				</li>
+				{% if is_recruteur %}
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('create') }}">Créer une annonce
+						</a>
+					</li>
+				{% endif %}
 			</ul>
 		</div>
 	</nav>
@@ -64,36 +66,50 @@
 				</div>
 			</div>
 		</form>
-		<h4 style="color: #41A1DB; margin-top: 3%">Entreprise</h4>
-		<row>
-			{% for entreprise in entreprises %}
-				<div class="entreprise">
-					<p>{{ entreprise.doc.name}}</p>
-					<button>
-						<a href="{{ path('profil-entreprise', {id : entreprise.doc._id}) }}">En savoir plus</a>
-					</button>
-				</div>
-			{% endfor %}
-		</row>
-		<h4 style="color: #41A1DB; margin-top: 3%">Annonces</h4>
-		<row>
-			{% for annonce in annonces %}
-				<div class="annonce">
-					<h5>{{ annonce.doc.title }}</h5>
-					<button>
-						<a href="{{ path('offre', {id : annonce.doc._id}) }}">En savoir plus</a>
-					</button>
-				</div>
-			{% endfor %}
-		</row>
-		<h4 style="color: #41A1DB; margin-top: 3%">Utilisateurs</h4>
-		<row>
-			{% for user in users %}
-				<div class="user">
-					<p>{{ user.doc.last_name}}
-						{{ user.doc.name }}</p>
-				</div>
-			{% endfor %}
-		</row>
+		{% if not (not entreprises and not annonces and not users) %}
+			<h4 style="color: #41A1DB; margin-top: 3%">Entreprise</h4>
+			<row>
+				{% if not entreprises %}
+					<p>Aucune entreprise correspondante</p>
+				{% endif %}
+				{% for entreprise in entreprises %}
+					<div class="entreprise">
+						<p>{{ entreprise.doc.name}}</p>
+						<button>
+							<a href="{{ path('profil-entreprise', {id : entreprise.doc._id}) }}">En savoir plus</a>
+						</button>
+					</div>
+				{% endfor %}
+			</row>
+			<h4 style="color: #41A1DB; margin-top: 3%">Annonces</h4>
+			<row>
+				{% if not annonces %}
+					<p>Aucune annonce correspondante</p>
+				{% endif %}
+				{% for annonce in annonces %}
+					<div class="annonce">
+						<h5>{{ annonce.doc.title }}</h5>
+						<button>
+							<a href="{{ path('offre', {id : annonce.doc._id}) }}">En savoir plus</a>
+						</button>
+					</div>
+				{% endfor %}
+			</row>
+			<h4 style="color: #41A1DB; margin-top: 3%">Utilisateurs</h4>
+			<row>
+				{% if not users %}
+					<p>Aucun profil correspondant</p>
+				{% endif %}
+				{% for user in users %}
+					<div class="user">
+						<p>
+							<a href="{{ path('profil-candidat', {id : user.doc._id}) }}">
+								{{ user.doc.last_name}}
+								{{ user.doc.name }}</a>
+						</p>
+					</div>
+				{% endfor %}
+			</row>
+		{% endif %}
 	</div>
 {% endblock %}

@@ -5,31 +5,30 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class RechercheController extends AbstractController
 {
 
     public function displayRecherche()
     {
-        $client = HttpClient::create();
-        $response = $client->request('GET', 'https://20678575.ngrok.io/annonces/_all_docs?include_docs=true');
-        $annonces_rows = $response->toArray();
-        $contents = $annonces_rows["rows"];
-        $respuser = $client->request('GET', 'https://20678575.ngrok.io/utilisateurs/_all_docs?include_docs=true');
-        $users_rows = $respuser->toArray();
-        $users = $users_rows["rows"];
-        $respentreprise = $client->request('GET', 'https://20678575.ngrok.io/entreprises/_all_docs?include_docs=true');
-        $entreprises_rows = $respentreprise->toArray();
-        $entreprises = $entreprises_rows["rows"];
+        $session = new Session();
+        $session->start();
+
         return $this->render('recherche.html.twig', [
-            'annonces' => $contents,
-            'users' => $users,
-            'entreprises' => $entreprises
+            'annonces' => [],
+            'users' => [],
+            'entreprises' => [],
+            "is_recruteur" => $session->get('is_recruteur')
         ]);
     }
 
     public function search(Request $request)
     {
+        $session = new Session();
+        $session->start();
+
+
         $client = HttpClient::create();
         $response = $client->request('GET', 'https://20678575.ngrok.io/annonces/_all_docs?include_docs=true');
         $contents = $response->toArray();
@@ -51,7 +50,7 @@ class RechercheController extends AbstractController
                 $names = explode(" ", $entreprise["doc"]["name"]);
                 
                 foreach ($names as $name) {
-                    if (strtolower($word) == strtolower($name) and $count == 0)
+                    if (strtolower($word) == strtolower($name) and $count == 0 and in_array($entreprise, $entreprise_found) == false)
                     {   
                         $count++;
                         $entreprise_found[] = $entreprise;
@@ -60,7 +59,7 @@ class RechercheController extends AbstractController
                 if ($count == 0)
                 {
                     foreach ($desc as $text) {
-                        if (strtolower($word) == strtolower($text) and $count == 0)
+                        if (strtolower($word) == strtolower($text) and $count == 0 and in_array($entreprise, $entreprise_found) == false)
                         {
                             $count++;
                             $entreprise_found[] = $entreprise;
@@ -77,7 +76,7 @@ class RechercheController extends AbstractController
                 
                 foreach ($titles as $text)
                 {
-                    if (strtolower($word) == strtolower($text) and $count == 0)
+                    if (strtolower($word) == strtolower($text) and $count == 0 and in_array($annonce, $annonce_found) == false)
                     {   
                         $count++;
                         $annonce_found[] = $annonce;
@@ -94,7 +93,7 @@ class RechercheController extends AbstractController
 
                             foreach ($names as $text)
                             {
-                                if (strtolower($word) == strtolower($text) and $count == 0)
+                                if (strtolower($word) == strtolower($text) and $count == 0 and in_array($annonce, $annonce_found) == false)
                                 {   
                                    $count++;
                                    $annonce_found[] = $annonce;
@@ -103,10 +102,61 @@ class RechercheController extends AbstractController
                         }
                     }
                 }
+
+                if ($count == 0)
+                {
+                    foreach ($entreprises["rows"] as $entreprise)
+                    {
+                        if ($entreprise["doc"]["_id"] == $annonce["doc"]["entreprise_id"] and $count == 0)
+                        {
+                            $names = explode(" ", $entreprise["doc"]["name"]);
+                            foreach ($names as $text)
+                            {
+                                if (strtolower($word) == strtolower($text) and $count == 0 and in_array($annonce, $annonce_found) == false)
+                                {   
+                                   $count++;
+                                   $annonce_found[] = $annonce;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if ($count == 0)
+                {
+                    foreach ($users["rows"] as $user)
+                    {
+                        if ($user["doc"]["_id"] == $annonce["doc"]["recruteur_id"] and $count == 0)
+                        {
+                            $names = explode(" ", $user["doc"]["name"]);
+                            foreach ($names as $text)
+                            {
+                                if (strtolower($word) == strtolower($text) and $count == 0 and in_array($annonce, $annonce_found) == false)
+                                {   
+                                   $count++;
+                                   $annonce_found[] = $annonce;
+                                }
+                            }
+                        }
+                        if ($user["doc"]["_id"] == $annonce["doc"]["recruteur_id"] and $count == 0)
+                        {
+                            $lastnames = explode(" ", $user["doc"]["last_name"]);
+                            foreach ($lastnames as $text)
+                            {
+                                if (strtolower($word) == strtolower($text) and $count == 0 and in_array($annonce, $annonce_found) == false)
+                                {   
+                                   $count++;
+                                   $annonce_found[] = $annonce;
+                                }
+                            }
+                        }
+                    }
+                }
+
                 if ($count == 0)
                 {    
                     foreach ($desc as $text) {
-                        if (strtolower($word) == strtolower($text) and $count == 0)
+                        if (strtolower($word) == strtolower($text) and $count == 0 and in_array($annonce, $annonce_found) == false)
                         {
                             $count++;
                             $annonce_found[] = $annonce;
@@ -126,7 +176,7 @@ class RechercheController extends AbstractController
                 
                 foreach ($names as $text)
                 {
-                    if (strtolower($word) == strtolower($text) and $count == 0)
+                    if (strtolower($word) == strtolower($text) and $count == 0 and in_array($user, $user_found) == false)
                     {   
                         $count++;
                         $user_found[] = $user;
@@ -135,7 +185,7 @@ class RechercheController extends AbstractController
                 
                 foreach ($lastnames as $text)
                 {
-                    if (strtolower($word) == strtolower($text) and $count == 0)
+                    if (strtolower($word) == strtolower($text) and $count == 0 and in_array($user, $user_found) == false)
                     {   
                         $count++;
                         $user_found[] = $user;
@@ -151,7 +201,7 @@ class RechercheController extends AbstractController
                             $comps = explode(" ", $competence);
                             foreach ($comps as $text)
                             {
-                                if (strtolower($word) == strtolower($text) and $count == 0)
+                                if (strtolower($word) == strtolower($text) and $count == 0 and in_array($user, $user_found) == false)
                                 {   
                                    $count++;
                                    $user_found[] = $user;
@@ -171,7 +221,7 @@ class RechercheController extends AbstractController
                             
                             foreach ($titles as $text)
                             {
-                                if (strtolower($word) == strtolower($text) and $count == 0)
+                                if (strtolower($word) == strtolower($text) and $count == 0 and in_array($user, $user_found) == false)
                                 {   
                                     $count++;
                                     $user_found[] = $user;
@@ -182,7 +232,7 @@ class RechercheController extends AbstractController
                         {
                             $desc2 = explode(" ", $experience["description"]);
                             foreach ($desc2 as $text) {
-                                if (strtolower($word) == strtolower($text) and $count == 0)
+                                if (strtolower($word) == strtolower($text) and $count == 0 and in_array($user, $user_found) == false)
                                 {
                                     $count++;
                                     $user_found[] = $user;
@@ -193,7 +243,7 @@ class RechercheController extends AbstractController
                         {
                             $ents = explode(" ", $experience["entreprise"]);
                             foreach ($ents as $text) {
-                                if (strtolower($word) == strtolower($text) and $count == 0)
+                                if (strtolower($word) == strtolower($text) and $count == 0 and in_array($user, $user_found) == false)
                                 {
                                     $count++;
                                     $user_found[] = $user;
@@ -213,7 +263,7 @@ class RechercheController extends AbstractController
                             
                             foreach ($titles as $text)
                             {
-                                if (strtolower($word) == strtolower($text) and $count == 0)
+                                if (strtolower($word) == strtolower($text) and $count == 0 and in_array($user, $user_found) == false)
                                 {   
                                     $count++;
                                     $user_found[] = $user;
@@ -224,7 +274,7 @@ class RechercheController extends AbstractController
                         {
                             $desc2 = explode(" ", $formation["description"]);
                             foreach ($desc2 as $text) {
-                                if (strtolower($word) == strtolower($text) and $count == 0)
+                                if (strtolower($word) == strtolower($text) and $count == 0 and in_array($user, $user_found) == false)
                                 {
                                     $count++;
                                     $user_found[] = $user;
@@ -235,7 +285,7 @@ class RechercheController extends AbstractController
                         {
                             $ecoles = explode(" ", $formation["ecole"]);
                             foreach ($ecoles as $text) {
-                                if (strtolower($word) == strtolower($text) and $count == 0)
+                                if (strtolower($word) == strtolower($text) and $count == 0 and in_array($user, $user_found) == false)
                                 {
                                     $count++;
                                     $user_found[] = $user;
@@ -248,7 +298,7 @@ class RechercheController extends AbstractController
                 if ($count == 0)
                 {    
                     foreach ($desc as $text) {
-                        if (strtolower($word) == strtolower($text) and $count == 0)
+                        if (strtolower($word) == strtolower($text) and $count == 0 and in_array($user, $user_found) == false)
                         {
                             $count++;
                             $user_found[] = $user;
@@ -260,7 +310,8 @@ class RechercheController extends AbstractController
         return $this->render('recherche.html.twig', [
             'annonces' => $annonce_found,
             'users' => $user_found,
-            'entreprises' => $entreprise_found
+            'entreprises' => $entreprise_found,
+            "is_recruteur" => $session->get('is_recruteur')
         ]);
     }
 }
