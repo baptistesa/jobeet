@@ -51,7 +51,7 @@ class RechercheController extends AbstractController
                 $names = explode(" ", $entreprise["doc"]["name"]);
                 
                 foreach ($names as $name) {
-                    if (strtolower($word) == strtolower($name))
+                    if (strtolower($word) == strtolower($name) and $count == 0)
                     {   
                         $count++;
                         $entreprise_found[] = $entreprise;
@@ -189,6 +189,17 @@ class RechercheController extends AbstractController
                                 }
                             }
                         }
+                        if ($count == 0)
+                        {
+                            $ents = explode(" ", $experience["entreprise"]);
+                            foreach ($ents as $text) {
+                                if (strtolower($word) == strtolower($text) and $count == 0)
+                                {
+                                    $count++;
+                                    $user_found[] = $user;
+                                }
+                            }
+                        }
                     }          
                 }
                 
@@ -213,6 +224,17 @@ class RechercheController extends AbstractController
                         {
                             $desc2 = explode(" ", $formation["description"]);
                             foreach ($desc2 as $text) {
+                                if (strtolower($word) == strtolower($text) and $count == 0)
+                                {
+                                    $count++;
+                                    $user_found[] = $user;
+                                }
+                            }
+                        }
+                        if ($count == 0)
+                        {
+                            $ecoles = explode(" ", $formation["ecole"]);
+                            foreach ($ecoles as $text) {
                                 if (strtolower($word) == strtolower($text) and $count == 0)
                                 {
                                     $count++;
