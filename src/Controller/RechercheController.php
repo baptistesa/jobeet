@@ -5,22 +5,30 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class RechercheController extends AbstractController
 {
 
     public function displayRecherche()
     {
-        $client = HttpClient::create();
+        $session = new Session();
+        $session->start();
+
         return $this->render('recherche.html.twig', [
             'annonces' => [],
             'users' => [],
-            'entreprises' => []
+            'entreprises' => [],
+            "is_recruteur" => $session->get('is_recruteur')
         ]);
     }
 
     public function search(Request $request)
     {
+        $session = new Session();
+        $session->start();
+
+
         $client = HttpClient::create();
         $response = $client->request('GET', 'https://20678575.ngrok.io/annonces/_all_docs?include_docs=true');
         $contents = $response->toArray();
@@ -302,7 +310,8 @@ class RechercheController extends AbstractController
         return $this->render('recherche.html.twig', [
             'annonces' => $annonce_found,
             'users' => $user_found,
-            'entreprises' => $entreprise_found
+            'entreprises' => $entreprise_found,
+            "is_recruteur" => $session->get('is_recruteur')
         ]);
     }
 }

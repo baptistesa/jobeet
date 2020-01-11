@@ -41,10 +41,12 @@
 						<span class="sr-only">(current)</span>
 					</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="{{ path('create') }}">Créer une annonce
-					</a>
-				</li>
+				{% if is_recruteur %}
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('create') }}">Créer une annonce
+						</a>
+					</li>
+				{% endif %}
 			</ul>
 		</div>
 	</nav>

@@ -4,11 +4,16 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpClient\HttpClient;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class ListeOffresController extends AbstractController
 {
 
     public function displayListeOffres() {
+        
+        $session = new Session();
+        $session->start();
+
         $client = HttpClient::create();
         $response = $client->request('GET', 'https://20678575.ngrok.io/annonces/_all_docs?include_docs=true');
         $contents = $response->toArray();
@@ -20,7 +25,8 @@ class ListeOffresController extends AbstractController
         return $this->render('liste-offres.html.twig', [
             'annonces' => $contents,
             'users' => $users,
-            'entreprises' => $entreprises
+            'entreprises' => $entreprises,
+            "is_recruteur" => $session->get('is_recruteur')
         ]);
     }
 }
