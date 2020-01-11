@@ -12,7 +12,10 @@ class CreateAnnonceController extends AbstractController
 {
     public function displayForm(Request $request)
     {
-        return $this->render('create-annonce.html.twig', array('display_info' => false));
+        $session = new Session();
+        $session->start();
+
+        return $this->render('create-annonce.html.twig', array('display_info' => false, 'is_recruteur' => $session->get("is_recruteur")));
     }
 
     public function postForm(Request $request)
@@ -68,6 +71,6 @@ class CreateAnnonceController extends AbstractController
         ]);
         $contents = $response->toArray();
 
-        return $this->render('create-annonce.html.twig', array('display_info' => true));
+        return $this->render('create-annonce.html.twig', array('display_info' => true, 'is_recruteur' => $session->get("is_recruteur")));
     }
 }
