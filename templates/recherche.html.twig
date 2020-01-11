@@ -90,8 +90,9 @@
 		<row>
 			{% for user in users %}
 				<div class="user">
-					<p>{{ user.doc.last_name}}
-						{{ user.doc.name }}</p>
+					<p><a href="{{ path('profil-candidat', {id : user.doc._id}) }}">
+						{{ user.doc.last_name}}
+						{{ user.doc.name }}</a></p>
 				</div>
 			{% endfor %}
 		</row>

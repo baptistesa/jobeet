@@ -10,6 +10,11 @@ profil-entreprise:
    path: /profil-entreprise/{id}
    controller: App\Controller\ProfilEntrepriseController::displayProfilEntreprise
 
+profil-candidat:
+   path: /profil-candidat/{id}
+   controller: App\Controller\ProfilCandidatController::displayProfilCandidat
+
+
 profil-utilisateur:
    path: /profil-utilisateur
    controller: App\Controller\ProfilUtilisateurController::displayProfilUtilisateur
