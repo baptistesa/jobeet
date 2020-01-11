@@ -35,7 +35,7 @@
 						{% for user in users.rows %}
 							{% if user.doc._id == postulant %}
 								<div class="candidature">
-									<h5>{{ user.doc.last_name }} {{ user.doc.name }}</h5>
+									<h5><a href="{{ path('profil-candidat', {id : user.doc._id}) }}">{{ user.doc.last_name }} {{ user.doc.name }}</a></h5>
 									<button>Accepter</button>
 									<button>Refuser</button>
 								</div>
