@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block body %}
-	 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="box-shadow: 0 4px 16px 0 rgba(50,56,63,0.16);">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light" style="box-shadow: 0 4px 16px 0 rgba(50,56,63,0.16);">
 		<a class="navbar-brand" style="color: #41A1DB; font-family: 'Montserrat', sans-serif;">Jobeet</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -22,7 +22,7 @@
 				<li class="nav-item">
 					<a class="nav-link" href="{{ path('profil-utilisateur') }}">Mon profil</a>
 				</li>
- 
+
 				<li class="nav-item">
 					<a class="nav-link" href="{{ path('liste-entreprise') }}">Liste des entreprises</a>
 				</li>
@@ -32,13 +32,13 @@
 				{% if not is_recruteur %}
 				<li class="nav-item active">
 					<a class="nav-link" href="{{ path('liste-offres') }}">Liste des offres
-					<span class="sr-only">(current)</span>
 					</a>
 				</li>
 				{% endif %}
 				{% if is_recruteur %}
-				<li class="nav-item">
-					<a class="nav-link" href="{{ path('mes-offres') }}">Mes offres publiées</a>
+				<li class="nav-item active">
+					<a class="nav-link" href="{{ path('mes-offres') }}">Mes offres publiées
+					<span class="sr-only">(current)</span></a>
 				</li>
 				{% endif %}
 				<li class="nav-item">
@@ -59,28 +59,36 @@
 		</div>
 	</nav>
 	<div class="my_container">
-		<h1 style="color: #41A1DB">Liste des offres</h1>
-		<p class="subtitle">Retrouvez les offres qui vous correspondent</p>
+		<h1 style="color: #41A1DB">Mes offres publiées</h1>
+		<p class="subtitle">Retrouvez les offres que vous avez publiées</p>
 		{% if not annonces %}
-			<p>Aucune offre disponible</p>
+			<p>Aucune offre publiée</p>
 		{% endif %}
 		{% for annonce in annonces.rows %}
-			<div class="offer">
-				{% for entreprise in entreprises.rows %}
-					{% if annonce.doc.entreprise_id == entreprise.doc._id %}
-						<h5>{{ annonce.doc.title }} - {{ entreprise.doc.name}}</h5>
-					{% endif %}
-				{% endfor %}
-				<h6 style="color: #41A1DB">Description</h6>
-				<p>{{ annonce.doc.description }}</p>
-				<h6 style="color: #41A1DB">Recruteur</h6>
-				{% for user in users.rows %}
-					{% if annonce.doc.recruteur_id == user.doc._id %}
-						<p>{{ user.doc.last_name}} {{ user.doc.name }}</p>
-					{% endif %}
-				{% endfor %}
-                <button><a href="{{ path('offre', {id : annonce.doc._id}) }}">En savoir plus</a></button>
-			</div>
+
+			{% if annonce.doc.recruteur_id == id_current_user %}
+				<div class="offer">
+					{% for entreprise in entreprises.rows %}
+						{% if annonce.doc.entreprise_id == entreprise.doc._id %}
+							<h5>{{ annonce.doc.title }}
+								-
+								{{ entreprise.doc.name}}</h5>
+						{% endif %}
+					{% endfor %}
+					<h6 style="color: #41A1DB">Description</h6>
+					<p>{{ annonce.doc.description }}</p>
+					<h6 style="color: #41A1DB">Recruteur</h6>
+					{% for user in users.rows %}
+						{% if annonce.doc.recruteur_id == user.doc._id %}
+							<p>{{ user.doc.last_name}}
+								{{ user.doc.name }}</p>
+						{% endif %}
+					{% endfor %}
+					<button>
+						<a href="{{ path('offre', {id : annonce.doc._id}) }}">En savoir plus</a>
+					</button>
+				</div>
+			{% endif %}
 		{% endfor %}
 	</div>
 {% endblock %}

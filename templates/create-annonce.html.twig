@@ -30,11 +30,19 @@
 				<li class="nav-item">
 					<a class="nav-link" href="{{ path('liste-matchs') }}">Liste des matchs</a>
 				</li>
+				{% if not is_recruteur %}
 				<li class="nav-item">
 					<a class="nav-link" href="{{ path('liste-offres') }}">Liste des offres</a>
 				</li>
+				{% endif %}
+				{% if is_recruteur %}
 				<li class="nav-item">
-					<a class="nav-link" href="{{ path('liste-candidatures') }}">Liste des candidatures</a>
+					<a class="nav-link" href="{{ path('mes-offres') }}">Mes offres publiées</a>
+				</li>
+				{% endif %}
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('notifications') }}">Notifications
+					</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="{{ path('recherche') }}">Recherche

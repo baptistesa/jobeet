@@ -76,3 +76,13 @@ post-annonce:
 update-profil:
    path: '/update-profil'
    controller: App\Controller\ProfilUtilisateurController::updateInfos
+
+
+notifications:
+   path: '/notifications'
+   controller: App\Controller\NotificationsController::displayPage
+
+   
+mes-offres:
+   path: '/mes-offres'
+   controller: App\Controller\MesOffresController::displayListeOffres
