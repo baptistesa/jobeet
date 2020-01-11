@@ -48,10 +48,14 @@ class RechercheController extends AbstractController
             {
                 $count = 0;
                 $desc = explode(" ", $entreprise["doc"]["description"]);
-                if (strtolower($word) == strtolower($entreprise["doc"]["name"]))
-                {   
-                    $count++;
-                    $entreprise_found[] = $entreprise;
+                $names = explode(" ", $entreprise["doc"]["name"]);
+                
+                foreach ($names as $name) {
+                    if (strtolower($word) == strtolower($name))
+                    {   
+                        $count++;
+                        $entreprise_found[] = $entreprise;
+                    }
                 }
                 if ($count == 0)
                 {
@@ -84,11 +88,19 @@ class RechercheController extends AbstractController
                 {
                     foreach ($annonce["doc"]["competences"] as $competence)
                     {
-                        if (strtolower($word) == strtolower($competence) and $count == 0)
-                        {   
-                           $count++;
-                           $annonce_found[] = $annonce;
-                        }   
+                        if ($count == 0)
+                        {
+                            $names = explode(" ", $competence);
+
+                            foreach ($names as $text)
+                            {
+                                if (strtolower($word) == strtolower($text) and $count == 0)
+                                {   
+                                   $count++;
+                                   $annonce_found[] = $annonce;
+                                }
+                            }
+                        }
                     }
                 }
                 if ($count == 0)
@@ -103,32 +115,48 @@ class RechercheController extends AbstractController
                 }
                 
             }
-            
+
             foreach ($users["rows"] as $user) 
             {
                 $count = 0;
                 $desc = explode(" ", $user["doc"]["description"]);
+                $names = explode(" ", $user["doc"]["name"]);
+                $lastnames = explode(" ", $user["doc"]["last_name"]);
                 
-                if (strtolower($word) == strtolower($user["doc"]["name"]))
-                {   
-                    $count++;
-                    $user_found[] = $user;
+                
+                foreach ($names as $text)
+                {
+                    if (strtolower($word) == strtolower($text) and $count == 0)
+                    {   
+                        $count++;
+                        $user_found[] = $user;
+                    }
                 }
                 
-                if (strtolower($word) == strtolower($user["doc"]["last_name"] and $count == 0))
-                {   
-                    $count++;
-                    $user_found[] = $user;
+                foreach ($lastnames as $text)
+                {
+                    if (strtolower($word) == strtolower($text) and $count == 0)
+                    {   
+                        $count++;
+                        $user_found[] = $user;
+                    }
                 }
 
                 if ($count == 0)
                 {
                     foreach ($user["doc"]["competences"] as $competence)
                     {
-                        if (strtolower($word) == strtolower($competence) and $count == 0)
-                        {   
-                           $count++;
-                           $user_found[] = $user;
+                        if ($count == 0)
+                        {
+                            $comps = explode(" ", $competence);
+                            foreach ($comps as $text)
+                            {
+                                if (strtolower($word) == strtolower($text) and $count == 0)
+                                {   
+                                   $count++;
+                                   $user_found[] = $user;
+                                }
+                            }
                         }   
                     }
                 }
@@ -139,7 +167,6 @@ class RechercheController extends AbstractController
                     {
                         if ($count == 0)
                         {
-                            $desc2 = explode(" ", $experience["description"]);
                             $titles = explode(" ", $experience["title"]); 
                             
                             foreach ($titles as $text)
@@ -150,6 +177,10 @@ class RechercheController extends AbstractController
                                     $user_found[] = $user;
                                 }
                             }
+                        }
+                        if ($count == 0)
+                        {
+                            $desc2 = explode(" ", $experience["description"]);
                             foreach ($desc2 as $text) {
                                 if (strtolower($word) == strtolower($text) and $count == 0)
                                 {
@@ -167,7 +198,6 @@ class RechercheController extends AbstractController
                     {
                         if ($count == 0)
                         {
-                            $desc2 = explode(" ", $formation["description"]);
                             $titles = explode(" ", $formation["title"]); 
                             
                             foreach ($titles as $text)
@@ -178,6 +208,10 @@ class RechercheController extends AbstractController
                                     $user_found[] = $user;
                                 }
                             }
+                        }
+                        if ($count == 0)
+                        {
+                            $desc2 = explode(" ", $formation["description"]);
                             foreach ($desc2 as $text) {
                                 if (strtolower($word) == strtolower($text) and $count == 0)
                                 {
