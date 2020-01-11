@@ -77,7 +77,7 @@
 				</div>
 			</div>
 		</form>
-		{% if not (not entreprises and not annonces and not users) %}
+		{% if not (not entreprises and not annonces and not users and tmp == 0) %}
 			<h4 style="color: #41A1DB; margin-top: 3%">Entreprise</h4>
 			<row>
 				{% if not entreprises %}

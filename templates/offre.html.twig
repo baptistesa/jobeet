@@ -53,7 +53,11 @@
 							{% if user.doc._id == match.id_user %}
 								<div class="match">
 									<h5>{{ user.doc.last_name }} {{ user.doc.name }}</h5>
-									<button>Inviter</button>
+									{% for invited in inviteds %}
+										{% if user.doc._id == invited %}
+											<button>Inviter</button>
+										{% endif %}
+									{% endfor %}
 								</div>
 							{% endif %}
 						{% endfor %}
