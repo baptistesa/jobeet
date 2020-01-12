@@ -63,14 +63,20 @@
 						{{ nom }}</h4>
 					<div>
 						<p>{{ description }}</p>
-						<button>Modifier</button>
 					</div>
-					<form>
-						<div class="form-check">
-							<input type="checkbox" class="form-check-input" id="exampleCheck1" checked="true">
-							<label class="form-check-label" for="exampleCheck1">Profil actif</label>
-						</div>
-					</form>
+
+					{% for user in utilisateurs.rows %}
+						{% if user.doc._id == id and user.doc.is_actif %}
+							<p>Je suis à la recherche d'emploi</p>
+						{% endif %}
+					{% endfor %}
+
+					{% for user in utilisateurs.rows %}
+						{% if user.doc._id == id and user.doc.is_actif == false %}
+							<p>Je ne suis pas à la recherche d'un emploi</p>
+						{% endif %}
+					{% endfor %}
+
 				</div>
 			</div>
 			<div class="col-lg-6">
@@ -139,5 +145,33 @@
 			</div>
 
 		</div>
+
+		<div class="row" style="margin-top: 2%">
+			<div class="col-lg-12">
+				<div class="description">
+					<h4>Modifier mon profil</h4>
+
+					<form action="{{ path('update-profil') }}" method="post" name="formulario_login">
+						<label for="prenom">Prénom:</label>
+						<input type="text" id="prenom" name="_prenom"/>
+						<br/>
+						<label for="nom">Nom:</label>
+						<input type="text" id="name" name="_nom"/>
+						<br/>
+						<label for="description">Description:</label>
+						<input type="text" id="description" name="_description"/>
+						<br/>
+						<label for="description">En recherche d'emploi ?</label>
+						<input type="text" id="description" name="_is_actif"/>
+						<br/>
+
+						<input class="my_button" type="submit" name="update_profil" value="Modifier mon profil"/>
+					</form>
+
+				</div>
+			</div>
+
+		</div>
+
 	</div>
 {% endblock %}

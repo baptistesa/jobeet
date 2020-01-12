@@ -72,3 +72,7 @@ create:
 post-annonce:
    path: '/post-annonce'
    controller: App\Controller\CreateAnnonceController::postForm
+
+update-profil:
+   path: '/update-profil'
+   controller: App\Controller\ProfilUtilisateurController::updateInfos

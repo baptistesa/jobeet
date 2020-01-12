@@ -28,10 +28,10 @@ p {
   font-size: 14px;
 }
 
-button {
+.my_button {
   background: #41a1db;
   color: white;
-  width: 8em;
+  width: 16em;
   height: 2.5em;
   text-align: center;
   border-radius: 20px;
