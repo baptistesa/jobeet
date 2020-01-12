@@ -13,7 +13,8 @@
 [] Notification aux postulant lors de la suppression de l'offre
 [X] Recherche de candidats
 [X] Page entreprise avec toutes les offres de cette dernière
-[] Profil d'un candidats visible par les autres candidats
+[X] Profil d'un candidats visible par les autres candidats
 [] Premium (voir notre classement avec pourcentage correspondance)
 [] Compte Admin ayant tout les droits
+[] Possibilité d'inviter un match à postuler
 [X] Annonce rattachée à un recruteur
