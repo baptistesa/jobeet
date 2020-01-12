@@ -14,11 +14,13 @@ class RechercheController extends AbstractController
     {
         $session = new Session();
         $session->start();
+        $tmp = 0;
 
         return $this->render('recherche.html.twig', [
             'annonces' => [],
             'users' => [],
             'entreprises' => [],
+            'tmp' => $tmp,
             "is_recruteur" => $session->get('is_recruteur')
         ]);
     }
@@ -37,6 +39,7 @@ class RechercheController extends AbstractController
         $respentreprise = $client->request('GET', 'https://20678575.ngrok.io/entreprises/_all_docs?include_docs=true');
         $entreprises = $respentreprise->toArray();
         $words = explode(" ", $request->request->get('_search'));
+        $tmp = 1;
         $entreprise_found = [];
         $annonce_found = [];
         $user_found = [];
@@ -311,6 +314,7 @@ class RechercheController extends AbstractController
             'annonces' => $annonce_found,
             'users' => $user_found,
             'entreprises' => $entreprise_found,
+            'tmp' => $tmp,
             "is_recruteur" => $session->get('is_recruteur')
         ]);
     }
