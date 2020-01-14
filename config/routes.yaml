@@ -42,6 +42,11 @@ conversation:
    path: /conversation/{id}
    controller: App\Controller\ConversationController::displayConversation
 
+
+update-conversation:
+   path: /update-conversation/{id}
+   controller: App\Controller\ConversationController::updateConversation
+
 home:
    path: /home
    controller: App\Controller\HomeController::displayHome
