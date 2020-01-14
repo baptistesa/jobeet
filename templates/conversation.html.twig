@@ -63,35 +63,36 @@
 		</div>
 	</nav>
 	<div class="my_container">
-		<h1 style="color: #41A1DB">Conversation</h1>
-		<p class="subtitle">Conversation avec
-			{{ other.doc.name }}
-			{{ other.doc.last_name }}</p>
-		{% if not messages %}
-			<p>Aucun message disponible</p>
-		{% endif %}
-
-		{% for message in messages %}
-			{% if message.id_auteur == user.doc._id %}
-				<div class="row">
-					<div class="col-lg-5"></div>
-					<div class="col-lg-6 my_message">
-						<p style="margin-top: 2px">{{ message.message }}</p>
-					</div>
-				</div>
+		<div class="body">
+			<h1 style="color: #41A1DB">Conversation</h1>
+			<p class="subtitle">Conversation avec
+				{{ other.doc.name }}
+				{{ other.doc.last_name }}</p>
+			{% if not messages %}
+				<p>Aucun message disponible</p>
 			{% endif %}
-			{% if message.id_auteur == other.doc._id %}
-				<div class="row">
-					<div class="col-lg-6 his_message">
-						<p style="margin-top: 2px">{{ message.message }}</p>
-					</div>
-					<div class="col-lg-5"></div>
-				</div>
-			{% endif %}
-		{% endfor %}
 
+			{% for message in messages %}
+				{% if message.id_auteur == user.doc._id %}
+					<div class="row">
+						<div class="col-lg-5"></div>
+						<div class="col-lg-6 my_message">
+							<p style="margin-top: 2px">{{ message.message }}</p>
+						</div>
+					</div>
+				{% endif %}
+				{% if message.id_auteur == other.doc._id %}
+					<div class="row">
+						<div class="col-lg-6 his_message">
+							<p style="margin-top: 2px">{{ message.message }}</p>
+						</div>
+						<div class="col-lg-5"></div>
+					</div>
+				{% endif %}
+			{% endfor %}
+		</div>
 		<div class="footer">
-			<form action="{{ path('update-conversation', {id : id}) }}" method="put">
+			<form action="{{ path('update-conversation', {id : id}) }}">
 				<input class="message" type="text" id="message" name="_message" placeholder="Entrez votre message ici">
 				<input class="my_button" type="submit" name="update_conversation" value="Envoyer"/>
 			</form>
