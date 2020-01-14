@@ -18,6 +18,10 @@ class OffreController extends AbstractController
         $users = $respuser->toArray();
         $annonce_finale = null;
         $invited = [];
+
+        $session = new Session();
+        $session->start();
+
         foreach ($contents["rows"] as $annonce) {
             if ($annonce["doc"]["_id"] == $id) {
                 $annonce_finale = $annonce;
@@ -31,7 +35,8 @@ class OffreController extends AbstractController
             'annonces' => $contents,
             'users' => $users,
             'inviteds' => $invited,
-            'id' => $id
+            'id' => $id,
+            'is_recruteur' => $session->get('is_recruteur')
         ]);
     }
 
@@ -50,7 +55,8 @@ class OffreController extends AbstractController
 
         foreach ($contents["rows"] as $annonce) {
             if ($annonce["doc"]["_id"] == $id) {
-                array_push($annonce["doc"]["postulants"], $session->get('id'));
+                if (in_array($session->get('id'), $annonce["doc"]["postulants"]) == false)
+                    array_push($annonce["doc"]["postulants"], $session->get('id'));
                 $annonce_finale = $annonce;
                 foreach ($annonce["doc"]["matches"] as $matchs) {
                     if (in_array($matchs["id_user"], $annonce["doc"]["postulants"]) == false)
@@ -73,7 +79,8 @@ class OffreController extends AbstractController
             'annonces' => $contents,
             'users' => $users,
             'inviteds' => $invited,
-            'id' => $id
+            'id' => $id,
+            'is_recruteur' => $session->get('is_recruteur')
         ]);
     }
 
@@ -92,7 +99,8 @@ class OffreController extends AbstractController
 
         foreach ($contents["rows"] as $annonce) {
             if ($annonce["doc"]["_id"] == $offre_id) {
-                array_push($annonce["doc"]["postulants_acceptes"], $id);
+                if (in_array($id, $annonce["doc"]["postulants_acceptes"]) == false)
+                    array_push($annonce["doc"]["postulants_acceptes"], $id);
                 $annonce_finale = $annonce;
                 foreach ($annonce["doc"]["matches"] as $matchs) {
                     if (in_array($matchs["id_user"], $annonce["doc"]["postulants"]) == false)
@@ -115,7 +123,8 @@ class OffreController extends AbstractController
             'annonces' => $contents,
             'users' => $users,
             'inviteds' => $invited,
-            'id' => $offre_id
+            'id' => $offre_id,
+            'is_recruteur' => $session->get('is_recruteur')
         ]);
     }
 
