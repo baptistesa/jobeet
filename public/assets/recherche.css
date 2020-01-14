@@ -6,7 +6,6 @@
   padding: 1%;
 }
 
-
 h1 {
   font-size: 1.5rem;
 }
@@ -53,7 +52,7 @@ p {
   font-size: small;
 }
 
-button {
+.my_button, button {
   background: #41A1DB;
   color: white;
   width: 9em;
@@ -63,4 +62,8 @@ button {
   border-color: transparent;
   margin: auto;
   margin-top: 5px;
+}
+
+a {
+  color: black;
 }

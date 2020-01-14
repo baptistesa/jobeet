@@ -1,15 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Créer une annonce
+{% block title %}Conversation
 {% endblock %}
 
 {% block stylesheets %}
-	<link rel="stylesheet" href="{{ asset('create-annonce.css') }}">
+	<link rel="stylesheet" href="{{ asset('conversation.css') }}">
 {% endblock %}
 
 {% block body %}
-
-	<nav class="navbar navbar-expand-lg navbar-light bg-light" style="box-shadow: 0 4px 16px 0 rgba(50,56,63,0.16);">
+	 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="box-shadow: 0 4px 16px 0 rgba(50,56,63,0.16);">
 		<a class="navbar-brand" style="color: #41A1DB; font-family: 'Montserrat', sans-serif;">Jobeet</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -23,9 +22,11 @@
 				<li class="nav-item">
 					<a class="nav-link" href="{{ path('profil-utilisateur') }}">Mon profil</a>
 				</li>
-
-				<li class="nav-item">
-					<a class="nav-link" href="{{ path('liste-entreprise') }}">Liste des entreprises</a>
+ 
+				<li class="nav-item active">
+					<a class="nav-link" href="{{ path('liste-entreprise') }}">Liste des entreprises
+						<span class="sr-only">(current)</span>
+					</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="{{ path('liste-matchs') }}">Liste des matchs</a>
@@ -44,40 +45,42 @@
 					<a class="nav-link" href="{{ path('notifications') }}">Notifications
 					</a>
 				</li>
-				<li class="nav-item">
+                <li class="nav-item">
 					<a class="nav-link" href="{{ path('liste-conversations') }}">Liste des conversations
 					</a>
 				</li>
-
 				<li class="nav-item">
 					<a class="nav-link" href="{{ path('recherche') }}">Recherche
 					</a>
 				</li>
-				<li class="nav-item active">
+				{% if is_recruteur %}
+				<li class="nav-item">
 					<a class="nav-link" href="{{ path('create') }}">Créer une annonce
-						<span class="sr-only">(current)</span>
 					</a>
 				</li>
+				{% endif %}
 			</ul>
 		</div>
 	</nav>
-
-
 	<div class="my_container">
-		{% if display_info %}
-			<p>Annonce ajoutée avec succès !</p>
+		<h1 style="color: #41A1DB">Conversation</h1>
+		<p class="subtitle">Conversation avec {{ other.doc.name }} {{ other.doc.last_name }}</p>
+		{% if not messages %}
+			<p>Aucun message disponible</p>
 		{% endif %}
-		<h1 style="color: #41A1DB">Créer une annonce</h1>
 
+		{% for message in messages %}
+			{% if message.id_auteur == user.doc._id %}
+				<div class="my_message">
+					<p style="margin-top: 2px">{{ message.message }}</p>
+				</div>
+			{% endif %}
+			{% if message.id_auteur == other.doc._id %}
+				<div class="his_message">
+					<p style="margin-top: 2px">{{ message.message }}</p>
+				</div>
+			{% endif %}
+		{% endfor %}
 
-		<form action="{{ path('post-annonce') }}" method="post" name="formulaire_annonce">
-			<input type="text" id="title" name="_title" placeholder="Titre de l'annonce"/>
-			<br/>
-			<input type="text" id="description" name="_description" placeholder="Description de l'annonce"/>
-			<br/>
-			<input type="text" id="mail" name="_competences" value="" placeholder="Compétences requises"/>
-			<br/>
-			<input type="submit" name="login" value="Ajouter l'annonce"/>
-		</form>
 	</div>
 {% endblock %}

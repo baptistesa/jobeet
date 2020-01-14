@@ -8,6 +8,58 @@
 {% endblock %}
 
 {% block body %}
+	<nav class="navbar navbar-expand-lg navbar-light bg-light" style="box-shadow: 0 4px 16px 0 rgba(50,56,63,0.16);">
+		<a class="navbar-brand" style="color: #41A1DB; font-family: 'Montserrat', sans-serif;">Jobeet</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" href="#">Accueil
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('profil-utilisateur') }}">Mon profil</a>
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('liste-entreprise') }}">Liste des entreprises</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('liste-matchs') }}">Liste des matchs</a>
+				</li>
+				{% if not is_recruteur %}
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('liste-offres') }}">Liste des offres</a>
+					</li>
+				{% endif %}
+				{% if is_recruteur %}
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('mes-offres') }}">Mes offres publiées</a>
+					</li>
+				{% endif %}
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('notifications') }}">Notifications
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('liste-conversations') }}">Liste des conversations
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('recherche') }}">Recherche
+					</a>
+				</li>
+				{% if is_recruteur %}
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('create') }}">Créer une annonce
+						</a>
+					</li>
+				{% endif %}
+			</ul>
+		</div>
+	</nav>
 	{% for annonce in annonces.rows %}
 		{% if annonce.doc._id == id %}
 			<div class="my_container col-lg-12">
@@ -53,7 +105,8 @@
 						{% for user in users.rows %}
 							{% if user.doc._id == match.id_user %}
 								<div class="match">
-									<h5>{{ user.doc.last_name }} {{ user.doc.name }}</h5>
+									<h5>{{ user.doc.last_name }}
+										{{ user.doc.name }}</h5>
 									{% for invited in inviteds %}
 										{% if user.doc._id == invited %}
 											<button>Inviter</button>
