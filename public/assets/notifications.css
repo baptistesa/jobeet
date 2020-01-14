@@ -17,3 +17,10 @@ h1 {
 p {
     font-size: 14px;
 }
+
+.notif {
+  background: white;
+  box-shadow: 0 4px 16px 0 rgba(50, 56, 63, 0.08);
+  padding: 2%;
+  margin-top: 2%;
+}

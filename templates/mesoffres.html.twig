@@ -87,6 +87,9 @@
 					<button>
 						<a href="{{ path('offre', {id : annonce.doc._id}) }}">En savoir plus</a>
 					</button>
+					<button style="width: 12em">
+						<a href="{{ path('delete-annonce', {id : annonce.doc._id}) }}">Supprimer annonce</a>
+					</button>
 				</div>
 			{% endif %}
 		{% endfor %}

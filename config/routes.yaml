@@ -86,3 +86,24 @@ notifications:
 mes-offres:
    path: '/mes-offres'
    controller: App\Controller\MesOffresController::displayListeOffres
+
+
+delete-annonce:
+   path: '/delete-annonce/{id}'
+   controller: App\Controller\MesOffresController::deleteOffre
+
+
+
+postuler:
+   path: /postuler/{id}
+   controller: App\Controller\OffreController::postuler
+
+
+accepter:
+   path: /accepter/{id}/{offre_id}
+   controller: App\Controller\OffreController::accepter
+
+
+refuser:
+   path: /refuser/{id}
+   controller: App\Controller\OffreController::refuser

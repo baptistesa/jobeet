@@ -6,11 +6,11 @@
 [] Modification de l'annonce -> refresh les matchs
 [] 10K connections simultanées
 [] Possibilité d'accepter/décliner un postulant en tant que recruteur
-[] Possibilité de supprimer une offre en tant que recruteur
+[X] Possibilité de supprimer une offre en tant que recruteur
 [X] Avoir un statut "off" lorsque qu'on ne recherche pas d'emplois
 [] Durée de vie d'une annonce d'un mois
 [] Chat de communication avec postulants
-[] Notification aux postulant lors de la suppression de l'offre
+[X] Notification aux postulant lors de la suppression de l'offre
 [X] Recherche de candidats
 [X] Page entreprise avec toutes les offres de cette dernière
 [X] Profil d'un candidats visible par les autres candidats

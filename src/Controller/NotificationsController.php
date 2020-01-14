@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpClient\HttpClient;
 
 class NotificationsController extends AbstractController
 {
@@ -13,8 +14,13 @@ class NotificationsController extends AbstractController
         $session = new Session();
         $session->start();
 
+        $client = HttpClient::create();
+        $response = $client->request('GET', 'https://d10080de.ngrok.io/notifications/_all_docs?include_docs=true');
+        $content = $response->toArray();
+
         return $this->render('notifications.html.twig', [
-            'is_recruteur' => $session->get("is_recruteur")
+            'is_recruteur' => $session->get("is_recruteur"),
+            'notifications' => $content
         ]);
     }
 

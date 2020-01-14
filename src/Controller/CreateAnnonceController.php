@@ -58,6 +58,8 @@ class CreateAnnonceController extends AbstractController
             'competences' => $competences,
             'entreprise_id' => $session->get("entreprise_id"),
             'recruteur_id' => $session->get("id"),
+            "postulants_acceptes" => [],
+            "postulants_refuses" => [],
             "postulants" => [],
             "matches" => $matches
         );

@@ -12,6 +12,7 @@
 		{% if annonce.doc._id == id %}
 			<div class="my_container col-lg-12">
 				<h1 style="color: #41A1DB">{{ annonce.doc.title }}</h1>
+				<button><a href="{{ path('postuler', {id: id}) }}">Je postule</a></button>
 				<div class="description">
 					<h4 style="color: #41A1DB">Description</h4>
 					<p>{{ annonce.doc.description }}</p>
@@ -36,8 +37,8 @@
 							{% if user.doc._id == postulant %}
 								<div class="candidature">
 									<h5><a href="{{ path('profil-candidat', {id : user.doc._id}) }}">{{ user.doc.last_name }} {{ user.doc.name }}</a></h5>
-									<button>Accepter</button>
-									<button>Refuser</button>
+									<button><a href="{{ path('accepter', {id: postulant, offre_id: id}) }}">Accepter</a></button>
+									<button><a href="{{ path('refuser', {id:postulant, offre_id: id}) }}">Refuser</a></button>
 								</div>
 							{% endif %}
 						{% endfor %}
