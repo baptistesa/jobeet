@@ -15,11 +15,11 @@ class ListeOffresController extends AbstractController
         $session->start();
 
         $client = HttpClient::create();
-        $response = $client->request('GET', 'https://d10080de.ngrok.io/annonces/_all_docs?include_docs=true');
+        $response = $client->request('GET', 'https://ffb7c3a5.ngrok.io/annonces/_all_docs?include_docs=true');
         $contents = $response->toArray();
-        $respuser = $client->request('GET', 'https://d10080de.ngrok.io/utilisateurs/_all_docs?include_docs=true');
+        $respuser = $client->request('GET', 'https://ffb7c3a5.ngrok.io/utilisateurs/_all_docs?include_docs=true');
         $users = $respuser->toArray();
-        $respentreprise = $client->request('GET', 'https://d10080de.ngrok.io/entreprises/_all_docs?include_docs=true');
+        $respentreprise = $client->request('GET', 'https://ffb7c3a5.ngrok.io/entreprises/_all_docs?include_docs=true');
         $entreprises = $respentreprise->toArray();
         // dd($contents);
         return $this->render('liste-offres.html.twig', [

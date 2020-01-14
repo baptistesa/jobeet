@@ -15,9 +15,9 @@ class ConversationController extends AbstractController
         $session->start();
         
         $client = HttpClient::create();
-        $response = $client->request('GET', 'https://d10080de.ngrok.io/conversations/_all_docs?include_docs=true');
+        $response = $client->request('GET', 'https://ffb7c3a5.ngrok.io/conversations/_all_docs?include_docs=true');
         $convs = $response->toArray();
-        $resp_user = $client->request('GET', 'https://d10080de.ngrok.io/utilisateurs/_all_docs?include_docs=true');
+        $resp_user = $client->request('GET', 'https://ffb7c3a5.ngrok.io/utilisateurs/_all_docs?include_docs=true');
         $users = $resp_user->toArray();
         $messages = null;
         $other = null;
