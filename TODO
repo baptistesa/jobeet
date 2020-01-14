@@ -5,7 +5,7 @@
 [X] Liste de postulation
 [] Modification de l'annonce -> refresh les matchs
 [] 10K connections simultanées
-[] Possibilité d'accepter/décliner un postulant en tant que recruteur
+[X] Possibilité d'accepter/décliner un postulant en tant que recruteur
 [X] Possibilité de supprimer une offre en tant que recruteur
 [X] Avoir un statut "off" lorsque qu'on ne recherche pas d'emplois
 [] Durée de vie d'une annonce d'un mois
@@ -18,3 +18,7 @@
 [] Compte Admin ayant tout les droits
 [] Possibilité d'inviter un match à postuler
 [X] Annonce rattachée à un recruteur
+
+
+[] Ajouter l'id de l'annonce dans la conversation
+[] Envoyer une notification lors de l'acceptation et du refus d'un postulant

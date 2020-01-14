@@ -27,7 +27,8 @@ class ProfilUtilisateurController extends AbstractController
             "id" => $session->get('id'),
             "description" => $session->get('description'),
             "utilisateurs" => $contents,
-            "is_recruteur" => $session->get('is_recruteur')
+            "is_recruteur" => $session->get('is_recruteur'),
+            "is_premium" => $session->get('is_premium')
         ]);
     }
 
@@ -64,9 +65,15 @@ class ProfilUtilisateurController extends AbstractController
                         $contents["rows"][$i]["doc"]["is_actif"] = false;
                         $session->set('is_actif', false);
                     }
-                } else {
-                    $contents["rows"][$i]["doc"]["is_actif"] = false;
-                    $session->set('is_actif', false);
+                }
+                if ($request->request->get('_is_premium')) {
+                    if ($request->request->get('_is_premium') == "oui") {
+                        $contents["rows"][$i]["doc"]["is_premium"] = true;
+                        $session->set('is_premium', true);
+                    } else {
+                        $contents["rows"][$i]["doc"]["is_premium"] = false;
+                        $session->set('is_premium', false);
+                    }
                 }
             }
         }
@@ -87,7 +94,8 @@ class ProfilUtilisateurController extends AbstractController
             "id" => $session->get('id'),
             "description" => $session->get('description'),
             "utilisateurs" => $contents,
-            "is_recruteur" => $session->get('is_recruteur')
+            "is_recruteur" => $session->get('is_recruteur'),
+            "is_premium" => $session->get('is_premium')
         ]);
     }
 }

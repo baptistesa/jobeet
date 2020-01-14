@@ -32,6 +32,7 @@ class HomeController extends AbstractController
                 $session->set('description', $contents["rows"][$i]["doc"]["description"]);
                 $session->set('is_recruteur', $contents["rows"][$i]["doc"]["is_recruteur"]);
                 $session->set('entreprise_id', $contents["rows"][$i]["doc"]["entreprise_id"]);
+                $session->set('is_premium', $contents["rows"][$i]["doc"]["is_premium"]);
                 $session->set('id', $contents["rows"][$i]["doc"]["_id"]);
                 $is_recruteur = false;
                 if ($contents["rows"][$i]["doc"]["is_recruteur"])
@@ -55,7 +56,8 @@ class HomeController extends AbstractController
             'last_name' => $nom,
             'mail' => $mail,
             'password' => $password,
-            'description' => $description
+            'description' => $description,
+            'is_premium' => false
         );
 
         $client = HttpClient::create();

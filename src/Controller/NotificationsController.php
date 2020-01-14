@@ -20,7 +20,8 @@ class NotificationsController extends AbstractController
 
         return $this->render('notifications.html.twig', [
             'is_recruteur' => $session->get("is_recruteur"),
-            'notifications' => $content
+            'notifications' => $content,
+            'id' => $session->get("id")
         ]);
     }
 

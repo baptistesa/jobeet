@@ -77,16 +77,23 @@
 					</div>
 
 					{% for user in utilisateurs.rows %}
-						{% if user.doc._id == id and user.doc.is_actif %}
-							<p>Je suis à la recherche d'emploi</p>
-						{% endif %}
-					{% endfor %}
-
-					{% for user in utilisateurs.rows %}
 						{% if user.doc._id == id and user.doc.is_actif == false %}
 							<p>Je ne suis pas à la recherche d'un emploi</p>
 						{% endif %}
+						{% if user.doc._id == id and user.doc.is_actif %}
+							<p>Je suis à la recherche d'emploi</p>
+						{% endif %}
+
+
+						{% if user.doc._id == id and user.doc.is_premium == false %}
+							<p>Je ne suis pas un membre premium</p>
+						{% endif %}
+						{% if user.doc._id == id and user.doc.is_premium %}
+							<p>Je suis un membre premium</p>
+						{% endif %}
 					{% endfor %}
+
+					
 
 				</div>
 			</div>
@@ -174,6 +181,9 @@
 						<br/>
 						<label for="description">En recherche d'emploi ?</label>
 						<input type="text" id="description" name="_is_actif"/>
+						<br/>
+						<label for="description">Activer l'offre premium ?</label>
+						<input type="text" id="description" name="_is_premium"/>
 						<br/>
 
 						<input class="my_button" type="submit" name="update_profil" value="Modifier mon profil"/>
