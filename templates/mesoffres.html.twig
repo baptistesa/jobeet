@@ -88,12 +88,14 @@
 								{{ user.doc.name }}</p>
 						{% endif %}
 					{% endfor %}
-					<button>
-						<a href="{{ path('offre', {id : annonce.doc._id}) }}">En savoir plus</a>
-					</button>
-					<button style="width: 12em">
-						<a href="{{ path('delete-annonce', {id : annonce.doc._id}) }}">Supprimer annonce</a>
-					</button>
+					<div style="display:inline-block">
+						<button style="width: 12em; margin-left:17px;">
+							<a style="color:white" href="{{ path('offre', {id : annonce.doc._id}) }}">En savoir plus</a>
+						</button>
+						<button style="width: 12em; margin-left:17px;">
+							<a style="color:white" href="{{ path('delete-annonce', {id : annonce.doc._id}) }}">Supprimer annonce</a>
+						</button>
+					</div>
 				</div>
 			{% endif %}
 		{% endfor %}
