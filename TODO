@@ -1,20 +1,20 @@
 [X] Filtres, recherches par mots clés (CV + descriptions)
 [X] Page de profil matché pour recruteur
-[] Mail hebdomadaire listant les matchs de la semaine
+
 [] Selection de profils, entreprises avec 75% de correspondances (Possibilité de trier par pertinence)
 [X] Liste de postulation
 [] Modification de l'annonce -> refresh les matchs
-[] 10K connections simultanées
+
 [X] Possibilité d'accepter/décliner un postulant en tant que recruteur
 [X] Possibilité de supprimer une offre en tant que recruteur
 [X] Avoir un statut "off" lorsque qu'on ne recherche pas d'emplois
-[] Durée de vie d'une annonce d'un mois
+
 [] Chat de communication avec postulants
 [X] Notification aux postulant lors de la suppression de l'offre
 [X] Recherche de candidats
 [X] Page entreprise avec toutes les offres de cette dernière
 [X] Profil d'un candidats visible par les autres candidats
-[] Premium (voir notre classement avec pourcentage correspondance)
+[X] Premium (voir notre classement avec pourcentage correspondance)
 [] Compte Admin ayant tout les droits
 [] Possibilité d'inviter un match à postuler
 [X] Annonce rattachée à un recruteur

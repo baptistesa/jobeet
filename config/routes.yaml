@@ -119,3 +119,7 @@ accepter:
 refuser:
    path: /refuser/{id}/{offre_id}
    controller: App\Controller\OffreController::refuser
+
+inviter:
+   path: /invite/{user_id}/{offre_id}
+   controller: App\Controller\OffreController::inviter
