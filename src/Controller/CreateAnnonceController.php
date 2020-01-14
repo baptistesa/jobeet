@@ -26,6 +26,7 @@ class CreateAnnonceController extends AbstractController
         $title = $request->request->get('_title');
         $description = $request->request->get('_description');
         $competences = explode(' ', $request->request->get('_competences'));
+        $creation_date = date('Y-m-d');
 
 
         $client_user = HttpClient::create();
@@ -61,7 +62,8 @@ class CreateAnnonceController extends AbstractController
             "postulants_acceptes" => [],
             "postulants_refuses" => [],
             "postulants" => [],
-            "matches" => $matches
+            "matches" => $matches,
+            "date_creation" => $creation_date
         );
 
         $client = HttpClient::create();
