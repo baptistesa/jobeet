@@ -64,11 +64,12 @@
 		{% if annonce.doc._id == id %}
 			<div class="my_container col-lg-12">
 				<h1 style="color: #41A1DB">{{ annonce.doc.title }}</h1>
-				<button><a href="{{ path('postuler', {id: id}) }}">Je postule</a></button>
+				<button>
+					<a href="{{ path('postuler', {id: id}) }}">Je postule</a>
+				</button>
 				<div class="description">
 					<h4 style="color: #41A1DB">Description</h4>
 					<p>{{ annonce.doc.description }}</p>
-					<button>Modifier</button>
 				</div>
 				<div class="description">
 					<h4 style="color: #41A1DB">Compétences</h4>
@@ -79,6 +80,9 @@
 						<button>{{ competence }}</button>
 					{% endfor %}
 				</div>
+				{% if is_recruteur %}
+					<button>Modifier</button>
+				{% endif %}
 				<div class="description">
 					<h4 style="color: #41A1DB">Postulants</h4>
 					{% if not annonce.doc.postulants %}
@@ -88,35 +92,46 @@
 						{% for user in users.rows %}
 							{% if user.doc._id == postulant %}
 								<div class="candidature">
-									<h5><a href="{{ path('profil-candidat', {id : user.doc._id}) }}">{{ user.doc.last_name }} {{ user.doc.name }}</a></h5>
-									<button><a href="{{ path('accepter', {id: postulant, offre_id: id}) }}">Accepter</a></button>
-									<button><a href="{{ path('refuser', {id:postulant, offre_id: id}) }}">Refuser</a></button>
+									<h5>
+										<a href="{{ path('profil-candidat', {id : user.doc._id}) }}">{{ user.doc.last_name }}
+											{{ user.doc.name }}</a>
+									</h5>
+									{% if is_recruteur %}
+										<button>
+											<a href="{{ path('accepter', {id: postulant, offre_id: id}) }}">Accepter</a>
+										</button>
+										<button>
+											<a href="{{ path('refuser', {id:postulant, offre_id: id}) }}">Refuser</a>
+										</button>
+									{% endif %}
 								</div>
 							{% endif %}
 						{% endfor %}
 					{% endfor %}
 				</div>
-				<div class="matchs">
-					<h4 style="color: #41A1DB">Matchs</h4>
-					{% if not annonce.doc.matches %}
-						<p>Aucun match trouvé</p>
-					{% endif %}
-					{% for match in annonce.doc.matches %}
-						{% for user in users.rows %}
-							{% if user.doc._id == match.id_user %}
-								<div class="match">
-									<h5>{{ user.doc.last_name }}
-										{{ user.doc.name }}</h5>
-									{% for invited in inviteds %}
-										{% if user.doc._id == invited %}
-											<button>Inviter</button>
-										{% endif %}
-									{% endfor %}
-								</div>
-							{% endif %}
+				{% if is_recruteur %}
+					<div class="matchs">
+						<h4 style="color: #41A1DB">Matchs</h4>
+						{% if not annonce.doc.matches %}
+							<p>Aucun match trouvé</p>
+						{% endif %}
+						{% for match in annonce.doc.matches %}
+							{% for user in users.rows %}
+								{% if user.doc._id == match.id_user %}
+									<div class="match">
+										<h5>{{ user.doc.last_name }}
+											{{ user.doc.name }}</h5>
+										{% for invited in inviteds %}
+											{% if user.doc._id == invited %}
+												<button>Inviter</button>
+											{% endif %}
+										{% endfor %}
+									</div>
+								{% endif %}
+							{% endfor %}
 						{% endfor %}
-					{% endfor %}
-				</div>
+					</div>
+				{% endif %}
 			</div>
 		{% endif %}
 	{% endfor %}
