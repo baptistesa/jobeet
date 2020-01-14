@@ -42,8 +42,8 @@ p {
 }
 
 .conversation {
-  height: 12rem;
-  width: 25rem;
+  height: 80px;
+  width: 15rem;
   display: inline-block;
   background: #ffffff;
   margin-left: 3%;
