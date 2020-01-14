@@ -13,12 +13,9 @@ h1 {
   background-color: white !important;
 }
 
-a {
-  color: white;
-}
-
 .offer {
   width: 30rem;
+  text-align: center;
   display: inline-block;
   background: #ffffff;
   margin: 2%;
