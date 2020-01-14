@@ -69,9 +69,14 @@
 		<p class="subtitle">Retrouvez toutes vos notifications</p>
 
 		{% for notif in notifications.rows%}
-			{% if notif.doc.id_user == id %}
+			{% if notif.doc.id_user == id and notif.doc.type == "suppression" %}
 			<div class="notif">
 				<p>{{ notif.doc.message }}</p>
+			</div>
+			{% endif %}
+			{% if notif.doc.id_user == id and notif.doc.type != "suppression" %}
+			<div class="notif">
+				<p><a href="{{ path('offre', {id: notif.doc.id_offre }) }}">{{ notif.doc.message }}</a></p>
 			</div>
 			{% endif %}
 		{% endfor %}

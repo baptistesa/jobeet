@@ -110,7 +110,7 @@
 					{% endfor %}
 				</div>
 				{% if is_recruteur %}
-					<div class="matchs">
+					<div class="description">
 						<h4 style="color: #41A1DB">Matchs</h4>
 						{% if not annonce.doc.matches %}
 							<p>Aucun match trouvé</p>
@@ -123,7 +123,7 @@
 											{{ user.doc.name }}</h5>
 										{% for invited in inviteds %}
 											{% if user.doc._id == invited %}
-												<button>Inviter</button>
+												<button><a href="{{ path('inviter', {user_id: invited, offre_id: id}) }}">Inviter</a></button>
 											{% endif %}
 										{% endfor %}
 									</div>
@@ -131,6 +131,13 @@
 							{% endfor %}
 						{% endfor %}
 					</div>
+				{% endif %}
+				{% if is_premium %}
+				<div class="description">
+					<h4 style="color: #41A1DB">Mon classement</h4>
+					<p><b>Position dans le classement:</b> {{ classement }}</p>
+					<p><b>Pourcentage de match:</b> {{ percent_match }}</p>
+				</div>
 				{% endif %}
 			</div>
 		{% endif %}
