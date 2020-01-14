@@ -4,11 +4,16 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpClient\HttpClient;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class ProfilEntrepriseController extends AbstractController
 {
 
     public function displayProfilEntreprise($id) {
+        $session = new Session();
+        $session->start();
+
+
         $client = HttpClient::create();
         $response = $client->request('GET', 'https://ffb7c3a5.ngrok.io/entreprises/_all_docs?include_docs=true');
         $contents = $response->toArray();
@@ -19,7 +24,8 @@ class ProfilEntrepriseController extends AbstractController
         return $this->render('profil-entreprise.html.twig', [ 
             'entreprises' => $contents,
             'annonces' => $contents_annonces,
-            'id' => $id
+            'id' => $id,
+            'is_recruteur' => $session->get("is_recruteur")
         ]);
     }
 }

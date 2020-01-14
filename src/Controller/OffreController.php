@@ -156,6 +156,39 @@ class OffreController extends AbstractController
 
                 $response = $client->request('GET', 'https://ffb7c3a5.ngrok.io/annonces/_all_docs?include_docs=true');
                 $contents = $response->toArray();
+
+
+                $data = array(
+                    "id_user_1" => $session->get("id"),
+                    "id_user_2" => $id,
+                    "offre_id" => $offre_id,
+                    "messages" => []
+                );
+
+                $response_invite = $client->request("POST", "https://ffb7c3a5.ngrok.io/conversations", [
+                    "headers" => [
+                        "Content-Type" => "application/json"
+                    ],
+                    'body' => json_encode($data)
+                ]);
+                $contents_invite = $response_invite->toArray();
+
+
+
+                $data = array(
+                    'type' => "accepter",
+                    'id_user' => $id,
+                    'message' => "Votre demande de postulation à l'annonce '" . $annonce_finale["doc"]["title"] . "' a été acceptée.",
+                    'id_offre' => $offre_id
+                );
+
+                $response_accepter_notif = $client->request("POST", "https://ffb7c3a5.ngrok.io/notifications", [
+                    "headers" => [
+                        "Content-Type" => "application/json"
+                    ],
+                    'body' => json_encode($data)
+                ]);
+                $contents_accepter_notif = $response_accepter_notif->toArray();
             }
         }
 
@@ -214,6 +247,22 @@ class OffreController extends AbstractController
 
                 $response = $client->request('GET', 'https://ffb7c3a5.ngrok.io/annonces/_all_docs?include_docs=true');
                 $contents = $response->toArray();
+
+
+                $data = array(
+                    'type' => "refuser",
+                    'id_user' => $id,
+                    'message' => "Votre demande de postulation à l'annonce '" . $annonce_finale["doc"]["title"] . "' a été refusée.",
+                    'id_offre' => $offre_id
+                );
+
+                $response_refuser_notif = $client->request("POST", "https://ffb7c3a5.ngrok.io/notifications", [
+                    "headers" => [
+                        "Content-Type" => "application/json"
+                    ],
+                    'body' => json_encode($data)
+                ]);
+                $contents_accepter_notif = $response_refuser_notif->toArray();
             }
         }
 

@@ -118,3 +118,11 @@ refuser:
 inviter:
    path: /invite/{user_id}/{offre_id}
    controller: App\Controller\OffreController::inviter
+
+update-annonce:
+   path: /update-annonce/{offre_id}
+   controller: App\Controller\UpdateOffreController::displayForm
+
+submit-form:
+   path: /submit-form/{offre_id}
+   controller: App\Controller\UpdateOffreController::submitForm

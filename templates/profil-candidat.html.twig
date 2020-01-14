@@ -86,6 +86,16 @@
 							<p>N'est pas en recherche d'emploi</p>
 						</div>
 					{% endif %}
+					{% if utilisateur.doc.is_premium == true %}
+						<div>
+							<p>Membre premium</p>
+						</div>
+					{% endif %}
+					{% if utilisateur.doc.is_premium != true %}
+						<div>
+							<p>Membre standard</p>
+						</div>
+					{% endif %}
 				</div>
 			</div>
 			<div class="col-lg-6">

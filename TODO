@@ -16,9 +16,9 @@
 [X] Profil d'un candidats visible par les autres candidats
 [X] Premium (voir notre classement avec pourcentage correspondance)
 [] Compte Admin ayant tout les droits
-[] Possibilité d'inviter un match à postuler
+[X] Possibilité d'inviter un match à postuler
 [X] Annonce rattachée à un recruteur
 
 
-[] Ajouter l'id de l'annonce dans la conversation
-[] Envoyer une notification lors de l'acceptation et du refus d'un postulant
+[X] Ajouter l'id de l'annonce dans la conversation
+[X] Envoyer une notification lors de l'acceptation et du refus d'un postulant
