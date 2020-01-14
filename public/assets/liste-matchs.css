@@ -10,10 +10,20 @@
   margin-top: 0.5em;
 }
 
+.progress-bar {
+  color: #41A1DB;
+  background-color: #41A1DB;
+}
+
 h1 {
   font-size: 1.5rem;
 }
-
+ 
 .subtitle {
   font-size: 14px;
+}
+
+a {
+  color: black;
+  display:inline-block;
 }
