@@ -14,7 +14,6 @@ profil-candidat:
    path: /profil-candidat/{id}
    controller: App\Controller\ProfilCandidatController::displayProfilCandidat
 
-
 profil-utilisateur:
    path: /profil-utilisateur
    controller: App\Controller\ProfilUtilisateurController::displayProfilUtilisateur
@@ -34,6 +33,14 @@ liste-offres:
 liste-candidatures:
    path: /liste-candidatures
    controller: App\Controller\ListeCandidaturesController::displayListeCandidatures
+
+liste-conversations:
+   path: /liste-conversations
+   controller: App\Controller\ListeConversationsController::displayListeConversations
+
+conversation:
+   path: /conversation/{id}
+   controller: App\Controller\ConversationController::displayConversation
 
 home:
    path: /home

@@ -1,10 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des entreprises
+{% block title %}Liste des conversations
 {% endblock %}
+
 {% block stylesheets %}
-	<link rel="stylesheet" href="{{ asset('profil-entreprise.css') }}">
+	<link rel="stylesheet" href="{{ asset('liste-conversations.css') }}">
 {% endblock %}
+
 {% block body %}
 	 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="box-shadow: 0 4px 16px 0 rgba(50,56,63,0.16);">
 		<a class="navbar-brand" style="color: #41A1DB; font-family: 'Montserrat', sans-serif;">Jobeet</a>
@@ -20,9 +22,11 @@
 				<li class="nav-item">
 					<a class="nav-link" href="{{ path('profil-utilisateur') }}">Mon profil</a>
 				</li>
+ 
 				<li class="nav-item active">
 					<a class="nav-link" href="{{ path('liste-entreprise') }}">Liste des entreprises
-						<span class="sr-only">(current)</span></a>
+						<span class="sr-only">(current)</span>
+					</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="{{ path('liste-matchs') }}">Liste des matchs</a>
@@ -41,39 +45,51 @@
 					<a class="nav-link" href="{{ path('notifications') }}">Notifications
 					</a>
 				</li>
-				<li class="nav-item">
+                <li class="nav-item active">
 					<a class="nav-link" href="{{ path('liste-conversations') }}">Liste des conversations
+						<span class="sr-only">(current)</span>
 					</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="{{ path('recherche') }}">Recherche
 					</a>
 				</li>
+				{% if is_recruteur %}
 				<li class="nav-item">
 					<a class="nav-link" href="{{ path('create') }}">Créer une annonce
 					</a>
 				</li>
+				{% endif %}
 			</ul>
 		</div>
 	</nav>
-	<div class="my_container col-lg-12">
-		{% for entreprise in entreprises.rows %}
-			{% if entreprise.doc._id == id %}
-				<h1 style="color: #41A1DB">{{ entreprise.doc.name }}</h1>
-				<p>{{ entreprise.doc.description }}</p>
+	<div class="my_container">
+		<h1 style="color: #41A1DB">Liste des conversations</h1>
+		<p class="subtitle">Retrouvez l'ensemble de vos conversations</p>
+		{% if not conversations %}
+			<p>Aucune conversation disponible</p>
+		{% endif %}
 
-
-				{% for annonce in annonces.rows %}
-					{% if annonce.doc.entreprise_id == id %}
-						<div class="offer">
-							<h5>{{ annonce.doc.title }}</h5>
-							<p>{{ annonce.doc.description }}</p>
-							<button>En savoir plus</button>
-						</div>
-
-					{% endif %}
-				{% endfor %}
-			{% endif %}
+		{% for conversation in conversations %}
+			<div class="conversation">
+				<a href="{{ path('conversation', {id : conversation.doc._id}) }}">
+                    {% if id_user == conversation.doc.id_user_1 %}
+                        {% for user in users.rows %}
+                            {% if conversation.doc.id_user_2 == user.doc._id %}
+					            <p style="margin-top: 2px">{{ user.doc.name }} {{ user.doc.last_name }}</p>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+					{% if id_user == conversation.doc.id_user_2 %}
+                        {% for user in users.rows %}
+                            {% if conversation.doc.id_user_1 == user.doc._id %}
+					            <p style="margin-top: 2px">{{ user.doc.name }} {{ user.doc.last_name }}</p>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+				</a>
+			</div>
 		{% endfor %}
+
 	</div>
 {% endblock %}

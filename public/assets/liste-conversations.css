@@ -1,0 +1,54 @@
+.my_container {
+  background: #f9fcfc;
+  height: 100vh;
+  width: 100vw;
+  font-family: "Montserrat", sans-serif;
+  padding: 1%;
+  padding-top: 1%;
+}
+h1 {
+  font-size: 1.5rem;
+}
+
+.bg-light {
+  background-color: white !important;
+}
+
+a {
+  color: black;
+}
+
+/* unvisited link */
+a:link {
+  color: gray;
+}
+
+/* mouse over link */
+a:hover {
+  color: #41a1db;
+}
+
+/* selected link */
+a:active {
+  color: #41a1db;
+}
+
+.img-thumbnail {
+  border-color: transparent;
+}
+
+p {
+  font-size: 14px;
+}
+
+.conversation {
+  height: 12rem;
+  width: 25rem;
+  display: inline-block;
+  background: #ffffff;
+  margin-left: 3%;
+  border-radius: 8px;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  box-shadow: 0 4px 16px 0 rgba(50, 56, 63, 0.08);
+}
