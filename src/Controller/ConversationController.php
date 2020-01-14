@@ -84,14 +84,12 @@ class ConversationController extends AbstractController
                 $test = $response_update->toArray();
                 $response = $client->request('GET', 'https://ffb7c3a5.ngrok.io/conversations/_all_docs?include_docs=true');
                 $convs = $response->toArray();
-                var_dump($convs);
             }
         }
 
 
 
         foreach ($convs["rows"] as $conv) {
-            var_dump("je suis le deuxieme");
             if ($conv["doc"]["_id"] == $id) {
                 if ($id_user == $conv["doc"]["id_user_1"])
                     $id_other = $conv["doc"]["id_user_2"];
