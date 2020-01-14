@@ -112,5 +112,5 @@ accepter:
 
 
 refuser:
-   path: /refuser/{id}
+   path: /refuser/{id}/{offre_id}
    controller: App\Controller\OffreController::refuser
