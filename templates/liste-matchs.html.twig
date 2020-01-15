@@ -85,9 +85,7 @@ $('[data-toggle="tooltip"]').tooltip()
 
 
 		{% if is_recruteur == false %}
-			<div class="row" style="margin-top: 5%">
-			<h4 style="color: #41A1DB; margin-top: 3%">Mes matchs</h4>
-
+			<div class="row" style="margin-top: 3%">
 				{% for annonce in annonces %}
 
 					<div class="col-4">
@@ -135,9 +133,12 @@ $('[data-toggle="tooltip"]').tooltip()
 					</div>
 
 				{% endfor %}
-				<button><a href="{{ path('liste-matchs-sort') }}">Trier par pertinence</a></button>
-
 			</div>
 		{% endif %}
+			<br></br>
+			<div style="text-align:center">
+				<button><a style="color:white" href="{{ path('liste-matchs-sort') }}">Trier par pertinence</a></button>
+			</div>
+
 	</div>
 {% endblock %}
