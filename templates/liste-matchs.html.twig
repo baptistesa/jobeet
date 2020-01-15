@@ -83,41 +83,10 @@ $('[data-toggle="tooltip"]').tooltip()
 			<p class="subtitle">Retrouvez les candidats matchées</p>
 		{% endif %}
 
-		{% if is_recruteur %}
-			<div class="row" style="margin-top: 5%">
-				<div class="col-4">
-					<div class="card">
-						<div class="card-header">
-							<h5 class="card-title">
-								<a href="#">Match #1</a>
-							</h5>
-						</div>
-						<div class="card-body">
-							<p class="card-text">Lorem ipsum dolor sit amet consectetur</p>
-							<div class="row justify-content-between">
-								<div class="col-4">
-									<p>
-										<b>
-											<u>Match</u>
-										</b>
-										:
-									</p>
-								</div>
-								<div class="col">
-									<div class="progress" data-toggle="tooltip" data-placement="bottom" title="50%">
-										<div class="progress-bar bg-warning" role="progressbar" style="width: 50%"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		{% endif %}
-
 
 		{% if is_recruteur == false %}
 			<div class="row" style="margin-top: 5%">
+			<h4 style="color: #41A1DB; margin-top: 3%">Mes matchs</h4>
 
 				{% for annonce in annonces %}
 
@@ -166,6 +135,7 @@ $('[data-toggle="tooltip"]').tooltip()
 					</div>
 
 				{% endfor %}
+				<button><a href="{{ path('liste-matchs-sort') }}">Trier par pertinence</a></button>
 
 			</div>
 		{% endif %}

@@ -26,6 +26,10 @@ liste-matchs:
    path: /liste-matchs
    controller: App\Controller\ListeMatchsController::displayListeMatchs
 
+liste-matchs-sort:
+   path: /liste-matchs-sort
+   controller: App\Controller\ListeMatchsController::displaysortUser
+
 liste-offres:
    path: /liste-offres
    controller: App\Controller\ListeOffresController::displayListeOffres
