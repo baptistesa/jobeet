@@ -16,11 +16,11 @@ class MesOffresController extends AbstractController
         $session->start();
 
         $client = HttpClient::create();
-        $response = $client->request('GET', 'https://ffb7c3a5.ngrok.io/annonces/_all_docs?include_docs=true');
+        $response = $client->request('GET', 'https://3296c880.ngrok.io/annonces/_all_docs?include_docs=true');
         $contents = $response->toArray();
-        $respuser = $client->request('GET', 'https://ffb7c3a5.ngrok.io/utilisateurs/_all_docs?include_docs=true');
+        $respuser = $client->request('GET', 'https://3296c880.ngrok.io/utilisateurs/_all_docs?include_docs=true');
         $users = $respuser->toArray();
-        $respentreprise = $client->request('GET', 'https://ffb7c3a5.ngrok.io/entreprises/_all_docs?include_docs=true');
+        $respentreprise = $client->request('GET', 'https://3296c880.ngrok.io/entreprises/_all_docs?include_docs=true');
         $entreprises = $respentreprise->toArray();
         // dd($contents);
         return $this->render('mesoffres.html.twig', [
@@ -38,11 +38,11 @@ class MesOffresController extends AbstractController
         $session->start();
 
         $client = HttpClient::create();
-        $response = $client->request('GET', 'https://ffb7c3a5.ngrok.io/annonces/_all_docs?include_docs=true');
+        $response = $client->request('GET', 'https://3296c880.ngrok.io/annonces/_all_docs?include_docs=true');
         $contents = $response->toArray();
-        $respuser = $client->request('GET', 'https://ffb7c3a5.ngrok.io/utilisateurs/_all_docs?include_docs=true');
+        $respuser = $client->request('GET', 'https://3296c880.ngrok.io/utilisateurs/_all_docs?include_docs=true');
         $users = $respuser->toArray();
-        $respentreprise = $client->request('GET', 'https://ffb7c3a5.ngrok.io/entreprises/_all_docs?include_docs=true');
+        $respentreprise = $client->request('GET', 'https://3296c880.ngrok.io/entreprises/_all_docs?include_docs=true');
         $entreprises = $respentreprise->toArray();
 
         for ($i = 0; $i < count($contents["rows"]); $i++)
@@ -55,7 +55,7 @@ class MesOffresController extends AbstractController
                         'message' => "L'annonce '". $contents["rows"][$i]["doc"]["title"] ."' a été supprimée"
                     );
 
-                    $add_notif_response = $client->request('POST', 'https://ffb7c3a5.ngrok.io/notifications', [
+                    $add_notif_response = $client->request('POST', 'https://3296c880.ngrok.io/notifications', [
                         "headers" => [
                             "Content-Type" => "application/json"
                         ],
@@ -65,14 +65,14 @@ class MesOffresController extends AbstractController
                 }
             }
 
-        $response_delete = $client->request('DELETE', 'https://ffb7c3a5.ngrok.io/annonces/' . $id . "/", [
+        $response_delete = $client->request('DELETE', 'https://3296c880.ngrok.io/annonces/' . $id . "/", [
             'query' => [
                 'rev' => $rev
             ]
         ]);
         $contents_delete = $response->toArray();
 
-        $response_all_annonces = $client->request('GET', 'https://ffb7c3a5.ngrok.io/annonces/_all_docs?include_docs=true');
+        $response_all_annonces = $client->request('GET', 'https://3296c880.ngrok.io/annonces/_all_docs?include_docs=true');
         $contents_all_annonce = $response_all_annonces->toArray();
 
 

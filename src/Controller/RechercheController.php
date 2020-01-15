@@ -32,11 +32,11 @@ class RechercheController extends AbstractController
 
 
         $client = HttpClient::create();
-        $response = $client->request('GET', 'https://ffb7c3a5.ngrok.io/annonces/_all_docs?include_docs=true');
+        $response = $client->request('GET', 'https://3296c880.ngrok.io/annonces/_all_docs?include_docs=true');
         $contents = $response->toArray();
-        $respuser = $client->request('GET', 'https://ffb7c3a5.ngrok.io/utilisateurs/_all_docs?include_docs=true');
+        $respuser = $client->request('GET', 'https://3296c880.ngrok.io/utilisateurs/_all_docs?include_docs=true');
         $users = $respuser->toArray();
-        $respentreprise = $client->request('GET', 'https://ffb7c3a5.ngrok.io/entreprises/_all_docs?include_docs=true');
+        $respentreprise = $client->request('GET', 'https://3296c880.ngrok.io/entreprises/_all_docs?include_docs=true');
         $entreprises = $respentreprise->toArray();
         $words = explode(" ", $request->request->get('_search'));
         $tmp = 1;

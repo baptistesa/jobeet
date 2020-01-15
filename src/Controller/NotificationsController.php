@@ -15,7 +15,7 @@ class NotificationsController extends AbstractController
         $session->start();
 
         $client = HttpClient::create();
-        $response = $client->request('GET', 'https://ffb7c3a5.ngrok.io/notifications/_all_docs?include_docs=true');
+        $response = $client->request('GET', 'https://3296c880.ngrok.io/notifications/_all_docs?include_docs=true');
         $content = $response->toArray();
 
         return $this->render('notifications.html.twig', [

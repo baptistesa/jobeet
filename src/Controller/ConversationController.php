@@ -16,9 +16,9 @@ class ConversationController extends AbstractController
         $session->start();
 
         $client = HttpClient::create();
-        $response = $client->request('GET', 'https://ffb7c3a5.ngrok.io/conversations/_all_docs?include_docs=true');
+        $response = $client->request('GET', 'https://3296c880.ngrok.io/conversations/_all_docs?include_docs=true');
         $convs = $response->toArray();
-        $resp_user = $client->request('GET', 'https://ffb7c3a5.ngrok.io/utilisateurs/_all_docs?include_docs=true');
+        $resp_user = $client->request('GET', 'https://3296c880.ngrok.io/utilisateurs/_all_docs?include_docs=true');
         $users = $resp_user->toArray();
         $messages = null;
         $other = null;
@@ -62,9 +62,9 @@ class ConversationController extends AbstractController
         $session->start();
 
         $client = HttpClient::create();
-        $response = $client->request('GET', 'https://ffb7c3a5.ngrok.io/conversations/_all_docs?include_docs=true');
+        $response = $client->request('GET', 'https://3296c880.ngrok.io/conversations/_all_docs?include_docs=true');
         $convs = $response->toArray();
-        $resp_user = $client->request('GET', 'https://ffb7c3a5.ngrok.io/utilisateurs/_all_docs?include_docs=true');
+        $resp_user = $client->request('GET', 'https://3296c880.ngrok.io/utilisateurs/_all_docs?include_docs=true');
         $users = $resp_user->toArray();
         $messages = null;
         $other = null;
@@ -75,14 +75,14 @@ class ConversationController extends AbstractController
         foreach ($convs["rows"] as $conv) {
             if ($conv["doc"]["_id"] == $id) {
                 array_push($conv["doc"]["messages"], (object) ['id_auteur' => $id_user, 'message' => $new_message]);
-                $response_update = $client->request('PUT', 'https://ffb7c3a5.ngrok.io/conversations/' . $id, [
+                $response_update = $client->request('PUT', 'https://3296c880.ngrok.io/conversations/' . $id, [
                     "headers" => [
                         "Content-Type" => "application/json"
                     ],
                     'body' => json_encode($conv["doc"])
                 ]);
                 $test = $response_update->toArray();
-                $response = $client->request('GET', 'https://ffb7c3a5.ngrok.io/conversations/_all_docs?include_docs=true');
+                $response = $client->request('GET', 'https://3296c880.ngrok.io/conversations/_all_docs?include_docs=true');
                 $convs = $response->toArray();
             }
         }

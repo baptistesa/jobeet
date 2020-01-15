@@ -26,12 +26,12 @@ class UpdateOffreController extends AbstractController
         $session->start();
 
         $client = HttpClient::create();
-        $response = $client->request('GET', 'https://ffb7c3a5.ngrok.io/annonces/_all_docs?include_docs=true');
+        $response = $client->request('GET', 'https://3296c880.ngrok.io/annonces/_all_docs?include_docs=true');
         $contents = $response->toArray();
 
 
 
-        $response2 = $client->request('GET', 'https://ffb7c3a5.ngrok.io/annonces/_all_docs?include_docs=true');
+        $response2 = $client->request('GET', 'https://3296c880.ngrok.io/annonces/_all_docs?include_docs=true');
         $contents2 = $response2->toArray();
 
 
@@ -41,20 +41,20 @@ class UpdateOffreController extends AbstractController
         $description = "";
         $competences = "";
 
-        for ($i = 0; $i < count($contents["rows"]); $i++) {
-            if ($contents["rows"][$i]["doc"]["_id"] == $offre_id) {
+        for ($l = 0; $l < count($contents["rows"]); $l++) {
+            if ($contents["rows"][$l]["doc"]["_id"] == $offre_id) {
                 if ($request->request->get('_title'))
-                    $contents["rows"][$i]["doc"]["title"] = $request->request->get('_title');
+                    $contents["rows"][$l]["doc"]["title"] = $request->request->get('_title');
                 if ($request->request->get('_description'))
-                    $contents["rows"][$i]["doc"]["description"] = $request->request->get('_description');
+                    $contents["rows"][$l]["doc"]["description"] = $request->request->get('_description');
                 if ($request->request->get('_competences'))
-                    $contents["rows"][$i]["doc"]["competences"] = explode(' ', $request->request->get('_competences'));
+                    $contents["rows"][$l]["doc"]["competences"] = explode(' ', $request->request->get('_competences'));
 
-                $response_update = $client->request('PUT', 'https://ffb7c3a5.ngrok.io/annonces/' . $offre_id, [
+                $response_update = $client->request('PUT', 'https://3296c880.ngrok.io/annonces/' . $offre_id, [
                     "headers" => [
                         "Content-Type" => "application/json"
                     ],
-                    'body' => json_encode($contents["rows"][$i]["doc"])
+                    'body' => json_encode($contents["rows"][$l]["doc"])
                 ]);
                 $contents_update = $response_update->toArray();
 

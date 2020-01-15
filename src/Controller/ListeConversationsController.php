@@ -12,9 +12,9 @@ class ListeConversationsController extends AbstractController
     public function displayListeConversations()
     {
         $client = HttpClient::create();
-        $response = $client->request('GET', 'https://ffb7c3a5.ngrok.io/conversations/_all_docs?include_docs=true');
+        $response = $client->request('GET', 'https://3296c880.ngrok.io/conversations/_all_docs?include_docs=true');
         $convs = $response->toArray();
-        $resp_user = $client->request('GET', 'https://ffb7c3a5.ngrok.io/utilisateurs/_all_docs?include_docs=true');
+        $resp_user = $client->request('GET', 'https://3296c880.ngrok.io/utilisateurs/_all_docs?include_docs=true');
         $users = $resp_user->toArray();
         $session = new Session();
         $session->start();

@@ -12,9 +12,9 @@ class OffreController extends AbstractController
     public function displayOffre($id)
     {
         $client = HttpClient::create();
-        $response = $client->request('GET', 'https://ffb7c3a5.ngrok.io/annonces/_all_docs?include_docs=true');
+        $response = $client->request('GET', 'https://3296c880.ngrok.io/annonces/_all_docs?include_docs=true');
         $contents = $response->toArray();
-        $respuser = $client->request('GET', 'https://ffb7c3a5.ngrok.io/utilisateurs/_all_docs?include_docs=true');
+        $respuser = $client->request('GET', 'https://3296c880.ngrok.io/utilisateurs/_all_docs?include_docs=true');
         $users = $respuser->toArray();
         $annonce_finale = null;
         $invited = [];
@@ -58,9 +58,9 @@ class OffreController extends AbstractController
     public function postuler($id)
     {
         $client = HttpClient::create();
-        $response = $client->request('GET', 'https://ffb7c3a5.ngrok.io/annonces/_all_docs?include_docs=true');
+        $response = $client->request('GET', 'https://3296c880.ngrok.io/annonces/_all_docs?include_docs=true');
         $contents = $response->toArray();
-        $respuser = $client->request('GET', 'https://ffb7c3a5.ngrok.io/utilisateurs/_all_docs?include_docs=true');
+        $respuser = $client->request('GET', 'https://3296c880.ngrok.io/utilisateurs/_all_docs?include_docs=true');
         $users = $respuser->toArray();
         $annonce_finale = null;
         $invited = [];
@@ -88,7 +88,7 @@ class OffreController extends AbstractController
                     if (in_array($matchs["id_user"], $annonce["doc"]["postulants"]) == false)
                         $invited[] = $matchs["id_user"];
                 }
-                $response_update = $client->request('PUT', 'https://ffb7c3a5.ngrok.io/annonces/' . $id, [
+                $response_update = $client->request('PUT', 'https://3296c880.ngrok.io/annonces/' . $id, [
                     "headers" => [
                         "Content-Type" => "application/json"
                     ],
@@ -96,7 +96,7 @@ class OffreController extends AbstractController
                 ]);
                 $contents_update = $response_update->toArray();
 
-                $response = $client->request('GET', 'https://ffb7c3a5.ngrok.io/annonces/_all_docs?include_docs=true');
+                $response = $client->request('GET', 'https://3296c880.ngrok.io/annonces/_all_docs?include_docs=true');
                 $contents = $response->toArray();
             }
         }
@@ -116,9 +116,9 @@ class OffreController extends AbstractController
     public function accepter($id, $offre_id)
     {
         $client = HttpClient::create();
-        $response = $client->request('GET', 'https://ffb7c3a5.ngrok.io/annonces/_all_docs?include_docs=true');
+        $response = $client->request('GET', 'https://3296c880.ngrok.io/annonces/_all_docs?include_docs=true');
         $contents = $response->toArray();
-        $respuser = $client->request('GET', 'https://ffb7c3a5.ngrok.io/utilisateurs/_all_docs?include_docs=true');
+        $respuser = $client->request('GET', 'https://3296c880.ngrok.io/utilisateurs/_all_docs?include_docs=true');
         $users = $respuser->toArray();
         $annonce_finale = null;
         $invited = [];
@@ -146,7 +146,7 @@ class OffreController extends AbstractController
                     if (in_array($matchs["id_user"], $annonce["doc"]["postulants"]) == false)
                         $invited[] = $matchs["id_user"];
                 }
-                $response_update = $client->request('PUT', 'https://ffb7c3a5.ngrok.io/annonces/' . $offre_id, [
+                $response_update = $client->request('PUT', 'https://3296c880.ngrok.io/annonces/' . $offre_id, [
                     "headers" => [
                         "Content-Type" => "application/json"
                     ],
@@ -154,7 +154,7 @@ class OffreController extends AbstractController
                 ]);
                 $contents_update = $response_update->toArray();
 
-                $response = $client->request('GET', 'https://ffb7c3a5.ngrok.io/annonces/_all_docs?include_docs=true');
+                $response = $client->request('GET', 'https://3296c880.ngrok.io/annonces/_all_docs?include_docs=true');
                 $contents = $response->toArray();
 
 
@@ -165,7 +165,7 @@ class OffreController extends AbstractController
                     "messages" => []
                 );
 
-                $response_invite = $client->request("POST", "https://ffb7c3a5.ngrok.io/conversations", [
+                $response_invite = $client->request("POST", "https://3296c880.ngrok.io/conversations", [
                     "headers" => [
                         "Content-Type" => "application/json"
                     ],
@@ -182,7 +182,7 @@ class OffreController extends AbstractController
                     'id_offre' => $offre_id
                 );
 
-                $response_accepter_notif = $client->request("POST", "https://ffb7c3a5.ngrok.io/notifications", [
+                $response_accepter_notif = $client->request("POST", "https://3296c880.ngrok.io/notifications", [
                     "headers" => [
                         "Content-Type" => "application/json"
                     ],
@@ -207,9 +207,9 @@ class OffreController extends AbstractController
     public function refuser($id, $offre_id)
     {
         $client = HttpClient::create();
-        $response = $client->request('GET', 'https://ffb7c3a5.ngrok.io/annonces/_all_docs?include_docs=true');
+        $response = $client->request('GET', 'https://3296c880.ngrok.io/annonces/_all_docs?include_docs=true');
         $contents = $response->toArray();
-        $respuser = $client->request('GET', 'https://ffb7c3a5.ngrok.io/utilisateurs/_all_docs?include_docs=true');
+        $respuser = $client->request('GET', 'https://3296c880.ngrok.io/utilisateurs/_all_docs?include_docs=true');
         $users = $respuser->toArray();
         $annonce_finale = null;
         $invited = [];
@@ -237,7 +237,7 @@ class OffreController extends AbstractController
                     if (in_array($matchs["id_user"], $annonce["doc"]["postulants"]) == false)
                         $invited[] = $matchs["id_user"];
                 }
-                $response_update = $client->request('PUT', 'https://ffb7c3a5.ngrok.io/annonces/' . $offre_id, [
+                $response_update = $client->request('PUT', 'https://3296c880.ngrok.io/annonces/' . $offre_id, [
                     "headers" => [
                         "Content-Type" => "application/json"
                     ],
@@ -245,7 +245,7 @@ class OffreController extends AbstractController
                 ]);
                 $contents_update = $response_update->toArray();
 
-                $response = $client->request('GET', 'https://ffb7c3a5.ngrok.io/annonces/_all_docs?include_docs=true');
+                $response = $client->request('GET', 'https://3296c880.ngrok.io/annonces/_all_docs?include_docs=true');
                 $contents = $response->toArray();
 
 
@@ -256,7 +256,7 @@ class OffreController extends AbstractController
                     'id_offre' => $offre_id
                 );
 
-                $response_refuser_notif = $client->request("POST", "https://ffb7c3a5.ngrok.io/notifications", [
+                $response_refuser_notif = $client->request("POST", "https://3296c880.ngrok.io/notifications", [
                     "headers" => [
                         "Content-Type" => "application/json"
                     ],
@@ -281,9 +281,9 @@ class OffreController extends AbstractController
     public function inviter($offre_id, $user_id)
     {
         $client = HttpClient::create();
-        $response = $client->request('GET', 'https://ffb7c3a5.ngrok.io/annonces/_all_docs?include_docs=true');
+        $response = $client->request('GET', 'https://3296c880.ngrok.io/annonces/_all_docs?include_docs=true');
         $contents = $response->toArray();
-        $respuser = $client->request('GET', 'https://ffb7c3a5.ngrok.io/utilisateurs/_all_docs?include_docs=true');
+        $respuser = $client->request('GET', 'https://3296c880.ngrok.io/utilisateurs/_all_docs?include_docs=true');
         $users = $respuser->toArray();
         $annonce_finale = null;
         $invited = [];
@@ -320,7 +320,7 @@ class OffreController extends AbstractController
             'id_offre' => $offre_id
         );
 
-        $response_invite = $client->request("POST", "https://ffb7c3a5.ngrok.io/notifications", [
+        $response_invite = $client->request("POST", "https://3296c880.ngrok.io/notifications", [
             "headers" => [
                 "Content-Type" => "application/json"
             ],
