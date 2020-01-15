@@ -50,6 +50,17 @@ class HomeController extends AbstractController
         $mail = $request->request->get('_mail');
         $password = $request->request->get('_password');
         $description = $request->request->get('_description');
+        if ($request->request->get('_is_recruteur') == "oui")
+            $is_recruteur = true;
+        else
+            $is_recruteur = false;
+
+        if ($request->request->get("_entreprise") == "cristal")
+            $entreprise_id = "43cbb1e84c739e5a57f8106c9e00dc44";
+        else if ($request->request->get("_entreprise") == "3ie")
+            $entreprise_id = "43cbb1e84c739e5a57f8106c9e00eaae";
+        else
+            $entreprise_id = "";
 
         $data = array(
             'name' => $prenom,
@@ -57,7 +68,14 @@ class HomeController extends AbstractController
             'mail' => $mail,
             'password' => $password,
             'description' => $description,
-            'is_premium' => false
+            'is_premium' => false,
+            'is_recruteur' => $is_recruteur,
+            "experiences" => [],
+            "formations" => [],
+            "competences" => [],
+            "entreprise_id" => $entreprise_id,
+            "is_premium" => false,
+            "is_actif" => true
         );
 
         $client = HttpClient::create();
